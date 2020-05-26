@@ -45,4 +45,9 @@ public class Person {
     public void setPersonDepartment(Department personDepartment) {
         this.personDepartment = personDepartment;
     }
+
+    public String toString(){
+        return "Person: "+name+" "+lastName
+                +", Faculty: "+personFaculty+", Department: "+personDepartment;
+    }
 }

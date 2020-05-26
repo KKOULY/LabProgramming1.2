@@ -1,10 +1,13 @@
 public class Faculty {
     private String title;
+    private String nameOfFaculty;
     private Student[] students;
     private Teacher[] teachers;
     private Department[] departments;
-    Faculty(){
-
+    public Faculty(){
+    }
+    public Faculty(String nameOfFaculty){
+        this.nameOfFaculty = nameOfFaculty;
     }
     public void addStudent(Student newStudent){
         Student[] studentListNow = new Student[students.length+1];
@@ -41,5 +44,9 @@ public class Faculty {
                 }
             }
         }
+    }
+
+    public String toString(){
+        return nameOfFaculty;
     }
 }

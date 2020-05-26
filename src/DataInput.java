@@ -94,5 +94,6 @@ public final class DataInput {
 		}
 		return s;
 	}
+
 	
 }
