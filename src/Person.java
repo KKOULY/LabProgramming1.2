@@ -1,8 +1,17 @@
 public class Person {
+
     private String name;
     private String lastName;
     private Faculty personFaculty;
+    private Department personDepartment;
     public Person(){
+    }
+
+    public Person(String name, String lastName, Faculty personFaculty, Department personDepartment) {
+        this.name = name;
+        this.lastName = lastName;
+        this.personFaculty = personFaculty;
+        this.personDepartment = personDepartment;
     }
 
     public String getName() {
@@ -27,5 +36,13 @@ public class Person {
 
     public void setPersonFaculty(Faculty personFaculty) {
         this.personFaculty = personFaculty;
+    }
+
+    public Department getPersonDepartment() {
+        return personDepartment;
+    }
+
+    public void setPersonDepartment(Department personDepartment) {
+        this.personDepartment = personDepartment;
     }
 }
