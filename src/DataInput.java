@@ -6,7 +6,7 @@ public final class DataInput {
 
 	private static void writeText(String wr){
 		if (wr == null)
-			System.out.print("Введіть дані: ");
+			System.out.print("Р’РІРµРґС–С‚СЊ РґР°РЅС–: ");
 		else 
 			System.out.print(wr);
 	}
@@ -15,7 +15,7 @@ public final class DataInput {
 		while (true) {
 			String s = getString();
 			if (s.equals("")) {
-				System.out.println("Ви нічого не ввели");
+				System.out.println("Р’Рё РЅС–С‡РѕРіРѕ РЅРµ РІРІРµР»Рё");
 				continue;
 			}
 			Long value = Long.valueOf(s);
@@ -30,11 +30,11 @@ public final class DataInput {
 			try {
 				s = getString();
 				if (s.equals("")) {
-					System.out.println("Ви нічого не ввели");
+					System.out.println("Р’Рё РЅС–С‡РѕРіРѕ РЅРµ РІРІРµР»Рё");
 					continue;
 				}
 				if (s.length() > 1) {
-					System.out.println("Ви ввели не 1 символ");
+					System.out.println("Р’Рё РІРІРµР»Рё РЅРµ 1 СЃРёРјРІРѕР»");
 					continue;
 				}
 			} catch (IOException e) {
@@ -51,7 +51,7 @@ public final class DataInput {
 			try {
 				s = getString();
 				if (s.equals("")) {
-					System.out.println("Ви нічого не ввели");
+					System.out.println("Р’Рё РЅС–С‡РѕРіРѕ РЅРµ РІРІРµР»Рё");
 					continue;
 				}
 				boolean isNumber = true;
@@ -68,7 +68,7 @@ public final class DataInput {
 					isNumber=false;
 				}
 				if (!isNumber){
-					System.out.println("Ви ввели недопустимі символи");
+					System.out.println("Р’Рё РІРІРµР»Рё РЅРµРґРѕРїСѓСЃС‚РёРјС– СЃРёРјРІРѕР»Рё");
 					continue;
 				}
 			} catch (IOException e) {
