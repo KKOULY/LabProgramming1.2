@@ -11,7 +11,7 @@ public class Laboratory {
         dep11.addStudent(new Student("etud1","stud",faculties[0],dep11,1,1));
         dep11.addStudent(new Student("btud2","stud",faculties[0],dep11,1,1));
         Department dep12 = faculties[0].departmentIndex(1);
-        dep12.addStudent(new Student("dtud3","stud",faculties[0],dep12,1,1));
+        dep12.addStudent(new Student("buud3","stud",faculties[0],dep12,1,1));
         dep12.addStudent(new Student("ctud4","stud",faculties[0],dep12,1,1));
         faculties[1].addDepartment("dep21");
         faculties[1].addDepartment("dep22");
@@ -26,6 +26,7 @@ public class Laboratory {
         System.out.println(Tools.getStringStudents(studentsTemp));
         studentsTemp = Tools.sortNames(true,studentsTemp);
         System.out.println(Tools.getStringStudents(studentsTemp));
+        System.out.println(Tools.getStringStudents(Tools.findStudentsName(studentsTemp,"b")));
     }
 
     public static void addFaculty(String nameOfFaculty){
