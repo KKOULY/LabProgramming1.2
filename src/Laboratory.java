@@ -24,7 +24,7 @@ public class Laboratory {
 
         Student[] studentsTemp = Tools.getAllStudents(faculties);
         System.out.println(Tools.getStringPerson(studentsTemp));
-        studentsTemp = (Student[]) Tools.sortNames(true,studentsTemp);
+        studentsTemp = (Student[]) Tools.sortCourse(true,studentsTemp);
         System.out.println(Tools.getStringPerson(studentsTemp));
         System.out.println(Tools.getStringPerson(Tools.findPersonName(studentsTemp,"b")));
     }
@@ -33,6 +33,13 @@ public class Laboratory {
         Faculty[] facultiesTemporary = new Faculty[faculties.length+1];
         System.arraycopy(faculties,0,facultiesTemporary,0,faculties.length);
         facultiesTemporary[faculties.length] = new Faculty(nameOfFaculty);
+        faculties = facultiesTemporary;
+    }
+
+    public static void addFaculty(Faculty faculty){
+        Faculty[] facultiesTemporary = new Faculty[faculties.length+1];
+        System.arraycopy(faculties,0,facultiesTemporary,0,faculties.length);
+        facultiesTemporary[faculties.length] = faculty;
         faculties = facultiesTemporary;
     }
 
