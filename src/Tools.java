@@ -201,7 +201,7 @@ public class Tools {
         return studentsTemp;
     }
 
-    public static Person[] getAllTeachers(Faculty[] faculties){
+    public static Teacher[] getAllTeachers(Faculty[] faculties){
         Teacher[] teachersTemp = new Teacher[0];
         for(int iFac = 0; iFac< faculties.length; iFac++){
             Faculty facultyTemp = faculties[iFac];
@@ -230,6 +230,13 @@ public class Tools {
         peopleTemp[people.length] = person;
         people = peopleTemp;
         return people;
+    }
+
+    public static Faculty[] addFaculty(Faculty[] faculties, Faculty faculty){
+        Faculty[] facultiesTemporary = new Faculty[faculties.length+1];
+        System.arraycopy(faculties,0,facultiesTemporary,0,faculties.length);
+        facultiesTemporary[faculties.length] = faculty;
+        return facultiesTemporary;
     }
 
     //перевіряє чи це слово(в стрічці тільки букви)

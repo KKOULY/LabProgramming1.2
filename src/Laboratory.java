@@ -36,13 +36,6 @@ public class Laboratory {
         faculties = facultiesTemporary;
     }
 
-    public static void addFaculty(Faculty faculty){
-        Faculty[] facultiesTemporary = new Faculty[faculties.length+1];
-        System.arraycopy(faculties,0,facultiesTemporary,0,faculties.length);
-        facultiesTemporary[faculties.length] = faculty;
-        faculties = facultiesTemporary;
-    }
-
     public static void deleteFaculty(int numOfFaculty){
         if (numOfFaculty<=faculties.length && numOfFaculty>=0) {
             Faculty[] facultiesTemporary = new Faculty[faculties.length - 1];
