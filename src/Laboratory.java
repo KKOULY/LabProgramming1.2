@@ -1,5 +1,5 @@
 public class Laboratory {
-    private Faculty[] faculties;
+    private Faculty[] faculties = new Faculty[0];
 
 
     public static void main(String[] args) {
@@ -63,5 +63,20 @@ public class Laboratory {
             }
             return realName;
         }
+    }
+
+    public String getAllStudents(String name){
+        String save = "";
+        for(int iFac = 0;iFac<faculties.length;iFac++){
+            Faculty facultyTemp = faculties[iFac];
+            for(int iDep = 0;iDep < facultyTemp.departmentsLength();iDep++){
+                Department departmentTemp = facultyTemp.departmentIndex(iDep);
+                for (int iStud = 0;iStud < departmentTemp.studentsLength();iStud++){
+                    save+=departmentTemp.studentIndex(iStud).toString()+"\n";
+                }
+            }
+        }
+
+        return save;
     }
 }

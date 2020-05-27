@@ -1,7 +1,7 @@
 public class Department{
     private String nameOfDepartment = "Unknown";
-    private Student[] students;
-    private Teacher[] teachers;
+    private Student[] students = new Student[0];
+    private Teacher[] teachers = new Teacher[0];
 
     public Department(){
 
@@ -52,5 +52,27 @@ public class Department{
             }
             teachers = teacherListNow;
         }
+    }
+
+    public void setNameOfDepartment(String nameOfDepartment){
+        this.nameOfDepartment = nameOfDepartment;
+    }
+
+    public Student studentIndex(int n){
+        if(n >=0 && n < students.length){
+            return students[n];
+        } else return null;
+    }
+    public int studentsLength(){
+        return students.length;
+    }
+
+    public Teacher teacherIndex(int n){
+        if(n >=0 && n < teachers.length){
+            return teachers[n];
+        } else return null;
+    }
+    public int teachersLength(){
+        return teachers.length;
     }
 }

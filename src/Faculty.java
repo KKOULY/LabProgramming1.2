@@ -1,7 +1,7 @@
 public class Faculty {
     private String title;
     private String nameOfFaculty;
-    private Department[] departments;
+    private Department[] departments = new Department[0];
     public Faculty(){
     }
     public Faculty(String nameOfFaculty){
@@ -27,6 +27,19 @@ public class Faculty {
             }
             departments = departmentsTemporary;
         }
+    }
+
+    public void setNameOfFaculty(String nameOfFaculty) {
+        this.nameOfFaculty = nameOfFaculty;
+    }
+
+    public Department departmentIndex(int n){
+        if(n >=0 && n < departments.length){
+            return departments[n];
+        } else return null;
+    }
+    public int departmentsLength(){
+        return departments.length;
     }
 
     public String toString(){
