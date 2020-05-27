@@ -37,6 +37,7 @@ public class Department{
                     numberStudents++;
                 }
             }
+            students = studentListNow;
         }
     }
     public void deleteTeacher(int numberOfTeacher){
@@ -49,6 +50,7 @@ public class Department{
                     numberTeachers++;
                 }
             }
+            teachers = teacherListNow;
         }
     }
 }
