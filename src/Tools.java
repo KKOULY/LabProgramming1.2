@@ -1,21 +1,57 @@
 public class Tools {
 
-    private static void swap(Student[] students, int i, int y) {
-        Student temp = students[i];
-        students[i] = students[y];
-        students[y] = temp;
-    }
+//    private static void swap(Student[] students, int i, int y) {
+//        Student temp = students[i];
+//        students[i] = students[y];
+//        students[y] = temp;
+//    }
 
-    public static Student[] sortNames(boolean up, Student[] students) {
-        initValueArr();
+//    public static Student[] sortNames(boolean up, Student[] students) {
+//        initValueArr();
+//        if(students != null && students.length > 1){
+//            for(int x = 1; x < students.length;x++){
+//                for (int y = students.length-1; y >= x; y--) {
+//                    if(up) {
+//                        if (!alphabetCompare(students,y-1,y))
+//                            swap(students, y - 1, y);
+//                    } else {
+//                        if (alphabetCompare(students,y-1,y))
+//                            swap(students, y - 1, y);
+//                    }
+//                }
+//            }
+//        }
+//        return students;
+//    }
+
+//    private static boolean alphabetCompare(Student[] students,int i, int y) {
+//        String s0 = students[i].getName();
+//        String s1 = students[y].getName();
+//        boolean flag = s0.length() <= s1.length();
+//        for(int x = 0;x < s0.length() && x < s1.length();x++){
+//            char c0 = Character.toUpperCase(s0.charAt(x));
+//            char c1 = Character.toUpperCase(s1.charAt(x));
+//            if(value[c0] < value[c1]){
+//                flag = true;
+//                break;
+//            } else if(value[c0] > value[c1]) {
+//                flag = false;
+//                break;
+//            }
+//        }
+//        return flag;
+//    }
+
+
+    public static Student[] sortCourse(boolean up, Student[] students) {
         if(students != null && students.length > 1){
             for(int x = 1; x < students.length;x++){
                 for (int y = students.length-1; y >= x; y--) {
                     if(up) {
-                        if (!alphabetCompare(students,y-1,y))
+                        if (students[y-1].getCourse()>students[y].getCourse())
                             swap(students, y - 1, y);
                     } else {
-                        if (alphabetCompare(students,y-1,y))
+                        if (students[y-1].getCourse()>students[y].getCourse())
                             swap(students, y - 1, y);
                     }
                 }
@@ -24,9 +60,27 @@ public class Tools {
         return students;
     }
 
-    private static boolean alphabetCompare(Student[] students,int i, int y) {
-        String s0 = students[i].getName();
-        String s1 = students[y].getName();
+    public static Person[] sortNames(boolean up, Person[] people) {
+        initValueArr();
+        if(people != null && people.length > 1){
+            for(int x = 1; x < people.length;x++){
+                for (int y = people.length-1; y >= x; y--) {
+                    if(up) {
+                        if (!alphabetCompare(people,y-1,y))
+                            swap(people, y - 1, y);
+                    } else {
+                        if (alphabetCompare(people,y-1,y))
+                            swap(people, y - 1, y);
+                    }
+                }
+            }
+        }
+        return people;
+    }
+
+    private static boolean alphabetCompare(Person[] people,int i, int y) {
+        String s0 = people[i].getName();
+        String s1 = people[y].getName();
         boolean flag = s0.length() <= s1.length();
         for(int x = 0;x < s0.length() && x < s1.length();x++){
             char c0 = Character.toUpperCase(s0.charAt(x));
@@ -41,6 +95,13 @@ public class Tools {
         }
         return flag;
     }
+
+    private static void swap(Person[] people, int i, int y) {
+        Person temp = people[i];
+        people[i] = people[y];
+        people[y] = temp;
+    }
+
     private static int[] value = new int[1169];
 
     private static void initValueArr(){
@@ -105,11 +166,21 @@ public class Tools {
         value[90]=59;
     }
 
-    public static String getStringStudents(Student[] students){
+//    public static String getStringStudents(Student[] students){
+//        String str = "";
+//        if(students != null){
+//            for(int i = 0;i<students.length;i++){
+//               str+=students[i].toString()+"\n";
+//            }
+//        }
+//        return str;
+//    }
+
+    public static String getStringPerson(Person[] people){
         String str = "";
-        if(students != null){
-            for(int i = 0;i<students.length;i++){
-               str+=students[i].toString()+"\n";
+        if(people != null){
+            for(int i = 0;i<people.length;i++){
+                str+=people[i].toString()+"\n";
             }
         }
         return str;
@@ -122,7 +193,7 @@ public class Tools {
             for(int iDep = 0;iDep < facultyTemp.departmentsLength();iDep++){
                 Department departmentTemp = facultyTemp.departmentIndex(iDep);
                 for (int iStud = 0;iStud < departmentTemp.studentsLength();iStud++){
-                    studentsTemp = addStudent(studentsTemp,departmentTemp.studentIndex(iStud));
+                    studentsTemp = (Student[]) addPerson(studentsTemp,departmentTemp.studentIndex(iStud));
                 }
             }
         }
@@ -130,12 +201,35 @@ public class Tools {
         return studentsTemp;
     }
 
-    private static Student[] addStudent(Student[] studArr, Student student){
-        Student[] studArrTemp = new Student[studArr.length+1];
-        System.arraycopy(studArr,0,studArrTemp,0,studArr.length);
-        studArrTemp[studArr.length] = student;
-        studArr = studArrTemp;
-        return studArr;
+    public static Person[] getAllTeachers(Faculty[] faculties){
+        Teacher[] teachersTemp = new Teacher[0];
+        for(int iFac = 0; iFac< faculties.length; iFac++){
+            Faculty facultyTemp = faculties[iFac];
+            for(int iDep = 0;iDep < facultyTemp.departmentsLength();iDep++){
+                Department departmentTemp = facultyTemp.departmentIndex(iDep);
+                for (int iTeach = 0;iTeach < departmentTemp.teachersLength();iTeach++){
+                    teachersTemp = (Teacher[]) addPerson(teachersTemp,departmentTemp.teacherIndex(iTeach));
+                }
+            }
+        }
+
+        return teachersTemp;
+    }
+
+//    private static Student[] addStudent(Student[] studArr, Student student){
+//        Student[] studArrTemp = new Student[studArr.length+1];
+//        System.arraycopy(studArr,0,studArrTemp,0,studArr.length);
+//        studArrTemp[studArr.length] = student;
+//        studArr = studArrTemp;
+//        return studArr;
+//    }
+
+    private static Person[] addPerson(Person[] people, Person person){
+        Person[] peopleTemp = new Student[people.length+1];
+        System.arraycopy(people,0,peopleTemp,0,people.length);
+        peopleTemp[people.length] = person;
+        people = peopleTemp;
+        return people;
     }
 
     //перевіряє чи це слово(в стрічці тільки букви)
@@ -175,13 +269,33 @@ public class Tools {
         }
     }
 
-    public static Student[] findStudentsName(Student[] students, String name){
-        Student[] studentList = {};
-        for(int j = 0; j<students.length;j++) {
+//    public static Student[] findStudentsName(Student[] students, String name){
+//        Student[] studentList = {};
+//        for(int j = 0; j<students.length;j++) {
+//            boolean find = false;
+//            if (name.length()<=students[j].getName().length()) {
+//                for (int i = 0; i < name.length(); i++) {
+//                    if (students[j].getName().charAt(i) == name.charAt(i)) find = true;
+//                    else {
+//                        find = false;
+//                        break;
+//                    }
+//                }
+//            }
+//            if (find==true){
+//                studentList = (Student[]) addPerson(studentList,students[j]);
+//            }
+//        }
+//        return studentList;
+//    }
+
+    public static Person[] findPersonName(Person[] people, String name){
+        Person[] peopleList = {};
+        for(int j = 0; j<people.length;j++) {
             boolean find = false;
-            if (name.length()<=students[j].getName().length()) {
+            if (name.length()<=people[j].getName().length()) {
                 for (int i = 0; i < name.length(); i++) {
-                    if (students[j].getName().charAt(i) == name.charAt(i)) find = true;
+                    if (people[j].getName().charAt(i) == name.charAt(i)) find = true;
                     else {
                         find = false;
                         break;
@@ -189,18 +303,19 @@ public class Tools {
                 }
             }
             if (find==true){
-                studentList = addStudent(studentList,students[j]);
+                peopleList = addPerson(peopleList,people[j]);
             }
         }
-        return studentList;
+        return peopleList;
     }
-    public static Student[] findStudentsLastName(Student[] students, String name){
-        Student[] studentList = {};
-        for(int j = 0; j<students.length;j++) {
+
+    public static Person[] findPersonLastName(Person[] people, String name){
+        Person[] peopleList = {};
+        for(int j = 0; j<people.length;j++) {
             boolean find = false;
-            if (name.length()<=students[j].getLastName().length()) {
+            if (name.length()<=people[j].getName().length()) {
                 for (int i = 0; i < name.length(); i++) {
-                    if (students[j].getLastName().charAt(i) == name.charAt(i)) find = true;
+                    if (people[j].getLastName().charAt(i) == name.charAt(i)) find = true;
                     else {
                         find = false;
                         break;
@@ -208,17 +323,38 @@ public class Tools {
                 }
             }
             if (find==true){
-                studentList = addStudent(studentList,students[j]);
+                peopleList = addPerson(peopleList,people[j]);
             }
         }
-        return studentList;
+        return peopleList;
     }
+
+//    public static Student[] findStudentsLastName(Student[] students, String name){
+//        Student[] studentList = {};
+//        for(int j = 0; j<students.length;j++) {
+//            boolean find = false;
+//            if (name.length()<=students[j].getLastName().length()) {
+//                for (int i = 0; i < name.length(); i++) {
+//                    if (students[j].getLastName().charAt(i) == name.charAt(i)) find = true;
+//                    else {
+//                        find = false;
+//                        break;
+//                    }
+//                }
+//            }
+//            if (find==true){
+//                studentList = (Student[]) addPerson(studentList,students[j]);
+//            }
+//        }
+//        return studentList;
+//    }
+
     public static Student[] findStudentCourse(int course, Student[] students){
         if (course>6) course=6;
         if (course<1) course=1;
         Student[] studentList = {};
         for(int j = 0; j<students.length;j++) {
-            if (students[j].getCourse()==course) addStudent(studentList,students[j]);
+            if (students[j].getCourse()==course) addPerson(studentList,students[j]);
         }
         return studentList;
     }
@@ -227,7 +363,7 @@ public class Tools {
         if (group<1) group=1;
         Student[] studentList = {};
         for(int j = 0; j<students.length;j++) {
-            if (students[j].getGroup()== group) addStudent(studentList,students[j]);
+            if (students[j].getGroup()== group) addPerson(studentList,students[j]);
         }
         return studentList;
     }
