@@ -213,4 +213,22 @@ public class Tools {
         }
         return studentList;
     }
+    public static Student[] findStudentCourse(int course, Student[] students){
+        if (course>6) course=6;
+        if (course<1) course=1;
+        Student[] studentList = {};
+        for(int j = 0; j<students.length;j++) {
+            if (students[j].getCourse()==course) addStudent(studentList,students[j]);
+        }
+        return studentList;
+    }
+    public static Student[] findStudentGroup(int group, Student[] students){
+        if (group>2) group=2;
+        if (group<1) group=1;
+        Student[] studentList = {};
+        for(int j = 0; j<students.length;j++) {
+            if (students[j].getGroup()== group) addStudent(studentList,students[j]);
+        }
+        return studentList;
+    }
 }
