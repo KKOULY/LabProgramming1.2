@@ -66,8 +66,12 @@ public class Laboratory {
     }
 
     public String getAllStudents(String name){
+        return getString(faculties);
+    }
+
+    public static String getString(Faculty[] faculties) {
         String save = "";
-        for(int iFac = 0;iFac<faculties.length;iFac++){
+        for(int iFac = 0; iFac< faculties.length; iFac++){
             Faculty facultyTemp = faculties[iFac];
             for(int iDep = 0;iDep < facultyTemp.departmentsLength();iDep++){
                 Department departmentTemp = facultyTemp.departmentIndex(iDep);
