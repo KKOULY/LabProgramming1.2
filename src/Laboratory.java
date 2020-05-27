@@ -65,11 +65,7 @@ public class Laboratory {
         }
     }
 
-    public String getAllStudents(String name){
-        return getString(faculties);
-    }
-
-    public static String getString(Faculty[] faculties) {
+    public String getAllStudents(Faculty[] faculties){
         String save = "";
         for(int iFac = 0; iFac< faculties.length; iFac++){
             Faculty facultyTemp = faculties[iFac];
@@ -83,4 +79,5 @@ public class Laboratory {
 
         return save;
     }
+
 }
