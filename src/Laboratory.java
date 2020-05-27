@@ -40,14 +40,45 @@ public class Laboratory {
             System.out.println("2. Створити/видалити/редагувати кафедру факультета.");
             System.out.println("3. Додати/видалити/редагувати студента/викладача до кафедри.");
             System.out.println("4. Знайти студента/викладача за ПІБ, курсом або групою.");
-            System.out.println("5. ");
-            System.out.println("6. ");
-            System.out.println("7. ");
-            System.out.println("8. ");
-            System.out.println("9. ");
+            System.out.println("5. Вивести всіх студентів впорядкованих за курсами.");
+            System.out.println("6. Вивести всіх студентів/викладачів факультета впорядкованих за алфавітом.");
+            System.out.println("7. Вивести всіх студентів кафедри впорядкованих за курсами.");
+            System.out.println("8. Вивести всіх студентів/викладачів кафедри впорядкованих за алфавітом.");
+            System.out.println("9. Вивести всіх студентів кафедри вказаного курсу.");
+            System.out.println("10. Вивести всіх студентів кафедри вказаного курсу впорядкованих за алфавітом.");
             choice = DataInput.getInt("Введіть номер: ");
+            UserChoice(choice);
         }while (choice != 0);
         System.exit(1);
+    }
+
+    private static void UserChoice(int choice) {
+        switch (choice){
+            case 0:
+                System.out.println("Робота програми завершена");
+            case 1:
+                break;
+            case 2:
+                break;
+            case 3:
+                break;
+            case 4:
+                break;
+            case 5:
+                break;
+            case 6:
+                break;
+            case 7:
+                break;
+            case 8:
+                break;
+            case 9:
+                break;
+            case 10:
+                break;
+            default:
+                System.out.println("Некоректний номер");
+        }
     }
 
     public static void addFaculty(String nameOfFaculty){
