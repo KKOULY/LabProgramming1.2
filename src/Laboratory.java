@@ -36,5 +36,49 @@ public class Laboratory {
         }
     }
     public static void main(String[] args) {
+
+    }
+
+
+    String[] students = new String[10];//delete
+    
+    private void swap(Student[] students, int i, int y) {
+        Student temp = students[i];
+        students[i] = students[y];
+        students[y] = temp;
+    }
+
+    public void sortNames(boolean up) {
+        if(students != null && students.length > 1){
+            for(int x = 1; x < students.length;x++){
+                for (int y = students.length-1; y >= x; y--) {
+                    if(up) {
+                        if (!alphabetCompare(y-1,y))
+                            swap(students, y - 1, y);
+                    } else {
+                        if (alphabetCompare(y-1,y))
+                            swap(students, y - 1, y);
+                    }
+                }
+            }
+        }
+    }
+
+    private boolean alphabetCompare(int i, int y) {
+        String s0 = students[i].getName();
+        String s1 = students[y].getName();
+        boolean flag = s0.length() <= s1.length();
+        for(int x = 0;x < s0.length() && x < s1.length();x++){
+            char c0 = Character.toLowerCase(s0.charAt(x));
+            char c1 = Character.toLowerCase(s1.charAt(x));
+            if(c0 < c1){
+                flag = true;
+                break;
+            } else if(c0 > c1) {
+                flag = false;
+                break;
+            }
+        }
+        return flag;
     }
 }

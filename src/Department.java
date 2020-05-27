@@ -2,7 +2,7 @@ public class Department{
     private String nameOfDepartment = "Unknown";
     private Student[] students;
     private Teacher[] teachers;
-    
+
     public Department(){
 
     }
