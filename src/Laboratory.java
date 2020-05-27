@@ -8,19 +8,19 @@ public class Laboratory {
         faculties[0].addDepartment("dep11");
         faculties[0].addDepartment("dep12");
         Department dep11 = faculties[0].departmentIndex(0);
-        dep11.addStudent(new Student("etud1","stud",faculties[0],dep11,1,1));
+        dep11.addStudent(new Student("etud1","stud",faculties[0],dep11,-20,1));
         dep11.addStudent(new Student("btud2","stud",faculties[0],dep11,1,1));
         Department dep12 = faculties[0].departmentIndex(1);
-        dep12.addStudent(new Student("buud3","stud",faculties[0],dep12,1,1));
-        dep12.addStudent(new Student("ctud4","stud",faculties[0],dep12,1,1));
+        dep12.addStudent(new Student("buud3","stud",faculties[0],dep12,5,1));
+        dep12.addStudent(new Student("ctud4","stud",faculties[0],dep12,1,50));
         faculties[1].addDepartment("dep21");
         faculties[1].addDepartment("dep22");
         Department dep21 = faculties[1].departmentIndex(0);
-        dep21.addStudent(new Student("atud5","stud",faculties[1],dep21,1,1));
-        dep21.addStudent(new Student("ftud6","stud",faculties[1],dep21,1,1));
+        dep21.addStudent(new Student("atud5","stud",faculties[1],dep21,1,2));
+        dep21.addStudent(new Student("bbud6","stud",faculties[1],dep21,8,1));
         Department dep22 = faculties[1].departmentIndex(1);
         dep22.addStudent(new Student("gtud7","stud",faculties[1],dep21,1,1));
-        dep22.addStudent(new Student("stud8","stud",faculties[1],dep22,1,1));
+        dep22.addStudent(new Student("stud8","stud",faculties[1],dep22,3,1));
 
         Student[] studentsTemp = Tools.getAllStudents(faculties);
         System.out.println(Tools.getStringStudents(studentsTemp));
