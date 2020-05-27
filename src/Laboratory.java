@@ -23,10 +23,10 @@ public class Laboratory {
         dep22.addStudent(new Student("stud8","stud",faculties[1],dep22,3,1));
 
         Student[] studentsTemp = Tools.getAllStudents(faculties);
-        System.out.println(Tools.getStringStudents(studentsTemp));
-        studentsTemp = Tools.sortNames(true,studentsTemp);
-        System.out.println(Tools.getStringStudents(studentsTemp));
-        System.out.println(Tools.getStringStudents(Tools.findStudentsName(studentsTemp,"b")));
+        System.out.println(Tools.getStringPerson(studentsTemp));
+        studentsTemp = (Student[]) Tools.sortNames(true,studentsTemp);
+        System.out.println(Tools.getStringPerson(studentsTemp));
+        System.out.println(Tools.getStringPerson(Tools.findPersonName(studentsTemp,"b")));
     }
 
     public static void addFaculty(String nameOfFaculty){
