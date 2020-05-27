@@ -1,6 +1,7 @@
 public class TestClass {
     private static Student[] students= new Student[5];
     public static void main(String[] args) {
+        initValueArr();
      students[0]=new Student();
      students[1]=new Student();
      students[2]=new Student();
@@ -9,9 +10,9 @@ public class TestClass {
     students[0].setName("Костя");
     students[1].setName("Алеша");
     students[2].setName("Яна");
-        students[3].setName("Янв");
-        students[4].setName("Янб");
-    sortNames(false,students);
+        students[3].setName("Їнв");
+        students[4].setName("Інб");
+    sortNames(true,students);
     for (int i=0;i<5;i++){
         System.out.println(students[i].getName());
         }
@@ -57,6 +58,7 @@ public class TestClass {
         return flag;
     }
     private static int[] value = new int[1169];
+
     private static void initValueArr(){
         value[1040]=1;
         value[1041]=2;
