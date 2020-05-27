@@ -22,11 +22,32 @@ public class Laboratory {
         dep22.addStudent(new Student("gtud7","stud",faculties[1],dep21,1,1));
         dep22.addStudent(new Student("stud8","stud",faculties[1],dep22,3,1));
 
-        Student[] studentsTemp = Tools.getAllStudents(faculties);
-        System.out.println(Tools.getStringPerson(studentsTemp));
-        studentsTemp = (Student[]) Tools.sortCourse(true,studentsTemp);
-        System.out.println(Tools.getStringPerson(studentsTemp));
-        System.out.println(Tools.getStringPerson(Tools.findPersonName(studentsTemp,"b")));
+//        Student[] studentsTemp = Tools.getAllStudents(faculties);
+//        System.out.println(Tools.getStringPerson(studentsTemp));
+//        studentsTemp = (Student[]) Tools.sortCourse(true,studentsTemp);
+//        System.out.println(Tools.getStringPerson(studentsTemp));
+//        System.out.println(Tools.getStringPerson(Tools.findPersonName(studentsTemp,"b")));
+
+        Tools.initValueArr();
+        startMenu();
+    }
+
+    private static void startMenu() {
+        int choice;
+        do{
+            System.out.println("0. Вихід");
+            System.out.println("1. Створити/Видалити/Редагувати факультет");
+            System.out.println("2. Створити/видалити/редагувати кафедру факультета.");
+            System.out.println("3. Додати/видалити/редагувати студента/викладача до кафедри.");
+            System.out.println("4. Знайти студента/викладача за ПІБ, курсом або групою.");
+            System.out.println("5. ");
+            System.out.println("6. ");
+            System.out.println("7. ");
+            System.out.println("8. ");
+            System.out.println("9. ");
+            choice = DataInput.getInt("Введіть номер: ");
+        }while (choice != 0);
+        System.exit(1);
     }
 
     public static void addFaculty(String nameOfFaculty){

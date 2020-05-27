@@ -61,7 +61,6 @@ public class Tools {
     }
 
     public static Person[] sortNames(boolean up, Person[] people) {
-        initValueArr();
         if(people != null && people.length > 1){
             for(int x = 1; x < people.length;x++){
                 for (int y = people.length-1; y >= x; y--) {
@@ -104,7 +103,7 @@ public class Tools {
 
     private static int[] value = new int[1169];
 
-    private static void initValueArr(){
+    public static void initValueArr(){
         value[1040]=1;
         value[1041]=2;
         value[1042]=3;
@@ -224,7 +223,7 @@ public class Tools {
 //        return studArr;
 //    }
 
-    private static Person[] addPerson(Person[] people, Person person){
+    public static Person[] addPerson(Person[] people, Person person){
         Person[] peopleTemp = new Student[people.length+1];
         System.arraycopy(people,0,peopleTemp,0,people.length);
         peopleTemp[people.length] = person;
@@ -240,7 +239,7 @@ public class Tools {
     }
 
     //перевіряє чи це слово(в стрічці тільки букви)
-    private boolean isWord(String word){
+    public boolean isWord(String word){
         for(int i =0; i<word.length(); i++) {
             if (!Character.isLetter(word.charAt(i))) {
                 return false;
@@ -249,7 +248,7 @@ public class Tools {
         return true;
     }
     //робить першу літеру великою, а всі наступні маленькими + не пропускає далі поки не введеш слово
-    private String checkName(String whatToWrite) {
+    public String checkName(String whatToWrite) {
         String realName = "";
         while (true) {
             String name = DataInput.getString(whatToWrite);
