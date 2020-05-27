@@ -153,7 +153,7 @@ public class Tools {
         while (true) {
             String name = DataInput.getString(whatToWrite);
             if (name.equals("")) {
-                return "немає ім'я в базі";
+                return "немає в базі";
             }
             if (!isWord(name)) {
                 System.out.println("Ви ввели недопустимі символи!");
