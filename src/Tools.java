@@ -174,4 +174,43 @@ public class Tools {
             return realName;
         }
     }
+
+    public static Student[] findStudentsName(Student[] students, String name){
+        Student[] studentList = {};
+        for(int j = 0; j<students.length;j++) {
+            boolean find = false;
+            if (name.length()<=students[j].getName().length()) {
+                for (int i = 0; i < name.length(); i++) {
+                    if (students[j].getName().charAt(i) == name.charAt(i)) find = true;
+                    else {
+                        find = false;
+                        break;
+                    }
+                }
+            }
+            if (find==true){
+                studentList = addStudent(studentList,students[j]);
+            }
+        }
+        return studentList;
+    }
+    public static Student[] findStudentsLastName(Student[] students, String name){
+        Student[] studentList = {};
+        for(int j = 0; j<students.length;j++) {
+            boolean find = false;
+            if (name.length()<=students[j].getLastName().length()) {
+                for (int i = 0; i < name.length(); i++) {
+                    if (students[j].getLastName().charAt(i) == name.charAt(i)) find = true;
+                    else {
+                        find = false;
+                        break;
+                    }
+                }
+            }
+            if (find==true){
+                studentList = addStudent(studentList,students[j]);
+            }
+        }
+        return studentList;
+    }
 }
