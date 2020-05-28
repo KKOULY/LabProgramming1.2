@@ -237,6 +237,7 @@ public class Tools {
     }
     public static boolean isWordList(String wordList){
         if (wordList.charAt(0)==' ') return false;
+        if (wordList.charAt(wordList.length()-1)==' ') return false;
         boolean space=false;
         for(int i =0; i<wordList.length(); i++) {
             if (space==true && wordList.charAt(i)==' ') return false;
@@ -376,7 +377,7 @@ public class Tools {
         try {
             BufferedReader rf = new BufferedReader(new FileReader("people.txt"));
             String personLine = rf.readLine();
-            while (personLine != null){
+            while (personLine  != null){
                 StringTokenizer tokenizer = new StringTokenizer(personLine,"|");
                 String profession = tokenizer.nextToken();
                 String name = tokenizer.nextToken();
@@ -469,18 +470,16 @@ public class Tools {
     public static void savePeople(Faculty[] faculties){
         Student[] students = Tools.getAllStudents(faculties);
         Teacher[] teachers = Tools.getAllTeachers(faculties);
-        String s = "";
-        for (int i = 0; i<students.length;i++){
-            s=s+"Student|"+students[i].getName()+"|"+students[i].getLastName()+"|"+students[i].getPersonFaculty()+
-                    "|"+students[i].getPersonDepartment()+"|"+students[i].getCourse()+"|"+students[i].getGroup()+"\n";
-        }
-        for (int i = 0; i<teachers.length;i++){
-            s=s+"Teacher|"+teachers[i].getName()+"|"+teachers[i].getLastName()+"|"+teachers[i].getPersonFaculty()+
-                    "|"+teachers[i].getPersonDepartment()+"\n";
-        }
         try {
             PrintWriter wr = new PrintWriter(new FileWriter("people.txt"));
-            wr.println(s);
+            for (int i = 0; i<students.length;i++){
+                wr.println("Student|"+students[i].getName()+"|"+students[i].getLastName()+"|"+students[i].getPersonFaculty()+
+                        "|"+students[i].getPersonDepartment()+"|"+students[i].getCourse()+"|"+students[i].getGroup());
+            }
+            for (int i = 0; i<teachers.length;i++){
+                wr.println("Teacher|"+teachers[i].getName()+"|"+teachers[i].getLastName()+"|"+teachers[i].getPersonFaculty()+
+                        "|"+teachers[i].getPersonDepartment());
+            }
             wr.close();
         } catch (IOException e) {
             e.printStackTrace();

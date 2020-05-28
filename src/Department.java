@@ -7,6 +7,22 @@ public class Department{
 
     }
 
+    public Student[] getStudents() {
+        return students;
+    }
+
+    public void setStudents(Student[] students) {
+        this.students = students;
+    }
+
+    public Teacher[] getTeachers() {
+        return teachers;
+    }
+
+    public void setTeachers(Teacher[] teachers) {
+        this.teachers = teachers;
+    }
+
     public Department(String nameOfDepartment){
         this.nameOfDepartment = nameOfDepartment;
     }
