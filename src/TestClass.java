@@ -131,6 +131,7 @@ public class TestClass {
                 faculties[numOfFaculty].departmentIndex(numOfDepartment).
                         addTeacher(new Teacher(name,lastName,faculties[numOfFaculty],
                                 faculties[numOfFaculty].departmentIndex(numOfDepartment)));
+                Tools.savePeople(faculties);
             }
         }
     }
@@ -144,9 +145,19 @@ public class TestClass {
                         addStudent(new Student(name,lastName,faculties[numOfFaculty],
                                 faculties[numOfFaculty].departmentIndex(numOfDepartment),
                                 course,group));
+                Tools.savePeople(faculties);
             }
         }
     }
-
+    private static void createFaculty(String nameOfFaculty, Faculty[] faculties){
+        addFaculty(faculties,new Faculty(nameOfFaculty));
+        Tools.saveFaculties(faculties);
+    }
+    private static void createDepartment(String nameOfDepartment, Faculty[] faculties, int numberOfFaculty){
+        if (numberOfFaculty>=0 && numberOfFaculty<faculties.length) {
+            faculties[numberOfFaculty].addDepartment(nameOfDepartment);
+            Tools.saveDepartments(faculties);
+        }
+    }
 }
 
