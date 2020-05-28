@@ -223,8 +223,24 @@ public class Tools {
 //        return studArr;
 //    }
 
+    public static Person[] addPerson(Student[] people, Student person){
+        Student[] peopleTemp = new Student[people.length+1];
+        System.arraycopy(people,0,peopleTemp,0,people.length);
+        peopleTemp[people.length] = person;
+        people = peopleTemp;
+        return people;
+    }
+
+    public static Person[] addPerson(Teacher[] people, Teacher person){
+        Teacher[] peopleTemp = new Teacher[people.length+1];
+        System.arraycopy(people,0,peopleTemp,0,people.length);
+        peopleTemp[people.length] = person;
+        people = peopleTemp;
+        return people;
+    }
+
     public static Person[] addPerson(Person[] people, Person person){
-        Person[] peopleTemp = new Student[people.length+1];
+        Person[] peopleTemp = new Person[people.length+1];
         System.arraycopy(people,0,peopleTemp,0,people.length);
         peopleTemp[people.length] = person;
         people = peopleTemp;

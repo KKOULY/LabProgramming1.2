@@ -7,10 +7,13 @@ public class TestClass {
 
         Faculty[] faculties = readFaculty();
         readDepartments(faculties);
+        readPeople(faculties);
         Department[] firstDepartment = faculties[0].getDepartments();
         Department[] secondDepartment = faculties[1].getDepartments();
         System.out.println(firstDepartment[0].toString());
         System.out.println(secondDepartment[0].toString());
+        System.out.println(Tools.getStringPerson(Tools.getAllStudents(faculties)));
+        System.out.println(Tools.getStringPerson(Tools.getAllTeachers(faculties)));
     }
 //public static Faculty[] readFaculty(){
 //        Faculty[] faculties = {};
@@ -99,6 +102,61 @@ public class TestClass {
             e.printStackTrace();
         }
         return faculties;
+    }
+
+    public static void readPeople(Faculty[] faculties){
+        try {
+            BufferedReader rf = new BufferedReader(new FileReader("people.txt"));
+            String personLine = rf.readLine();
+            while (personLine != null){
+                StringTokenizer tokenizer = new StringTokenizer(personLine,"|");
+                String profession = tokenizer.nextToken();
+                String name = tokenizer.nextToken();
+                String lastName = tokenizer.nextToken();
+                int numOfFaculty = Integer.valueOf(tokenizer.nextToken());
+                int numOfDepartment = Integer.valueOf(tokenizer.nextToken());
+                if(profession.equals("Student")){
+                    int course = Integer.valueOf(tokenizer.nextToken());
+                    int group = Integer.valueOf(tokenizer.nextToken());
+                    addStudent(faculties,name,lastName,numOfFaculty,numOfDepartment,course,group);
+                } else if(profession.equals("Teacher")){
+                    addTeacher(faculties,name,lastName,numOfFaculty,numOfDepartment);
+                }
+                personLine = rf.readLine();
+            }
+            rf.close();
+        }catch (FileNotFoundException ex){
+            System.out.println("Проблема з файлом");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private static void addTeacher(Faculty[] faculties, String name, String lastName, int numOfFaculty, int numOfDepartment) {
+        if(name == null) name = "None";
+        if(lastName == null) lastName = "None";
+        if(numOfFaculty>=0 && numOfFaculty < faculties.length){
+            if(numOfDepartment>=0 && numOfDepartment < faculties[numOfFaculty].departmentsLength()){
+                faculties[numOfFaculty].departmentIndex(numOfDepartment).
+                        addTeacher(new Teacher(name,lastName,faculties[numOfFaculty],
+                                faculties[numOfFaculty].departmentIndex(numOfDepartment)));
+            }
+        }
+    }
+
+    private static void addStudent(Faculty[] faculties, String name, String lastName, int numOfFaculty, int numOfDepartment, int course, int group) {
+        if(name == null) name = "None";
+        if(lastName == null) lastName = "None";
+        if(numOfFaculty>=0 && numOfFaculty < faculties.length){
+            if(numOfDepartment>=0 && numOfDepartment < faculties[numOfFaculty].departmentsLength()){
+                faculties[numOfFaculty].departmentIndex(numOfDepartment).
+                        addStudent(new Student(name,lastName,faculties[numOfFaculty],
+                                faculties[numOfFaculty].departmentIndex(numOfDepartment),
+                                course,group));
+            }
+        }
+
+
     }
 }
 

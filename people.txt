@@ -1,0 +1,6 @@
+Student|Name|LastName|0|0|1|2
+Teacher|Name|LastName|0|0
+Student|Name|LastName|1|0|4|0
+Teacher|Name|LastName|0|0
+Student|test|test|4234|432423|42343|4324
+none|test|test|2|0
