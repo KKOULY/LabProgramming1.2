@@ -414,7 +414,7 @@ public class Tools {
             e.printStackTrace();
         }
     }
-    public void writePeopleList(Faculty[] faculties){
+    public static void writePeopleList(Faculty[] faculties){
         Student[] students = Tools.getAllStudents(faculties);
         Teacher[] teachers = Tools.getAllTeachers(faculties);
         String s = "";

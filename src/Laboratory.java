@@ -31,6 +31,7 @@ public class Laboratory {
         System.out.println(Tools.getStringPerson(Tools.findPersonName(studentsTemp,"b")));
         Tools.saveFaculties(faculties);
         Tools.saveDepartments(faculties);
+        Tools.writePeopleList(faculties);
         startMenu();
     }
 
