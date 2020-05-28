@@ -1,5 +1,4 @@
 public class Faculty {
-    private String title;
     private String nameOfFaculty;
     private Department[] departments = new Department[0];
     public Faculty(){
@@ -8,10 +7,24 @@ public class Faculty {
         this.nameOfFaculty = nameOfFaculty;
     }
 
+    public Department[] getDepartments() {
+        return departments;
+    }
+
+    public void setDepartments(Department[] departments) {
+        this.departments = departments;
+    }
+
     public void addDepartment(String nameOfDepartment){
         Department[] departmentsTemporary = new Department[departments.length+1];
         System.arraycopy(departments,0,departmentsTemporary,0,departments.length);
         departmentsTemporary[departments.length] = new Department(nameOfDepartment);
+        departments = departmentsTemporary;
+    }
+    public void addDepartment(Department newDepartment){
+        Department[] departmentsTemporary = new Department[departments.length+1];
+        System.arraycopy(departments,0,departmentsTemporary,0,departments.length);
+        departmentsTemporary[departments.length] = newDepartment;
         departments = departmentsTemporary;
     }
 

@@ -28,7 +28,6 @@ public class Laboratory {
 //        System.out.println(Tools.getStringPerson(studentsTemp));
 //        System.out.println(Tools.getStringPerson(Tools.findPersonName(studentsTemp,"b")));
 
-        Tools.initValueArr();
         startMenu();
     }
 

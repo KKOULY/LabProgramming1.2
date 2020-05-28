@@ -6,20 +6,13 @@ import java.io.IOException;
 public class TestClass {
     private static Student[] students= new Student[5];
     public static void main(String[] args) {
-     students[0]=new Student();
-     students[1]=new Student();
-     students[2]=new Student();
-        students[3]=new Student();
-        students[4]=new Student();
-    students[0].setName("Костя");
-    students[1].setName("Алеша");
-    students[2].setName("Яна");
-        students[3].setName("Янв");
-        students[4].setName("Янб");
+
         Faculty[] faculties = readFaculty();
-        for (int i=0;i<faculties.length;i++){
-            System.out.println(faculties[i].toString());
-        }
+        readDepartments(faculties);
+        Department[] firstDepartment = faculties[0].getDepartments();
+        Department[] secondDepartment = faculties[1].getDepartments();
+        System.out.println(firstDepartment[0].toString());
+        System.out.println(secondDepartment[0].toString());
     }
 public static Faculty[] readFaculty(){
         Faculty[] faculties = {};
@@ -47,6 +40,29 @@ public static Faculty[] readFaculty(){
         facultiesTemporary[faculties.length] = faculty;
         return facultiesTemporary;
     }
-
+    public static void readDepartments(Faculty[] ourFaculties){
+        try {
+            BufferedReader rf = new BufferedReader(new FileReader("departments.txt"));
+            String departmentLine = rf.readLine();
+            int firstLetter=0;
+            Department newDepartment=new Department();
+            for (int i=0; i< departmentLine.length();i++){
+                if (departmentLine.charAt(i)=='|'){
+                   newDepartment = new Department(departmentLine.substring(firstLetter,i));
+                   firstLetter=i+1;
+                }
+                if (departmentLine.charAt(i)=='!'){
+                    Integer whatFaculty = Integer.valueOf(departmentLine.substring(firstLetter,i));
+                    ourFaculties[whatFaculty].addDepartment(newDepartment);
+                    firstLetter=i+1;
+                }
+            }
+            rf.close();
+        }catch (FileNotFoundException ex){
+            System.out.println("Проблема з файлом");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 }
 
