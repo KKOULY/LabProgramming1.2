@@ -35,12 +35,6 @@ public class TestClass {
 //    }
 //    return faculties;
 //}
-    public static Faculty[] addFaculty(Faculty[] faculties, Faculty faculty){
-        Faculty[] facultiesTemporary = new Faculty[faculties.length+1];
-        System.arraycopy(faculties,0,facultiesTemporary,0,faculties.length);
-        facultiesTemporary[faculties.length] = faculty;
-        return facultiesTemporary;
-    }
 //    public static void readDepartments(Faculty[] ourFaculties){
 //        try {
 //            BufferedReader rf = new BufferedReader(new FileReader("departments.txt"));
@@ -66,6 +60,13 @@ public class TestClass {
 //        }
 //    }
 
+    public static Faculty[] addFaculty(Faculty[] faculties, Faculty faculty){
+        Faculty[] facultiesTemporary = new Faculty[faculties.length+1];
+        System.arraycopy(faculties,0,facultiesTemporary,0,faculties.length);
+        facultiesTemporary[faculties.length] = faculty;
+        return facultiesTemporary;
+    }
+    
     public static void readDepartments(Faculty[] ourFaculties){
         try {
             BufferedReader rf = new BufferedReader(new FileReader("departments.txt"));
@@ -118,9 +119,9 @@ public class TestClass {
                 if(profession.equals("Student")){
                     int course = Integer.valueOf(tokenizer.nextToken());
                     int group = Integer.valueOf(tokenizer.nextToken());
-                    addStudent(faculties,name,lastName,numOfFaculty,numOfDepartment,course,group);
+                    createStudent(faculties,name,lastName,numOfFaculty,numOfDepartment,course,group);
                 } else if(profession.equals("Teacher")){
-                    addTeacher(faculties,name,lastName,numOfFaculty,numOfDepartment);
+                    createTeacher(faculties,name,lastName,numOfFaculty,numOfDepartment);
                 }
                 personLine = rf.readLine();
             }
@@ -132,7 +133,7 @@ public class TestClass {
         }
     }
 
-    private static void addTeacher(Faculty[] faculties, String name, String lastName, int numOfFaculty, int numOfDepartment) {
+    private static void createTeacher(Faculty[] faculties, String name, String lastName, int numOfFaculty, int numOfDepartment) {
         if(name == null) name = "None";
         if(lastName == null) lastName = "None";
         if(numOfFaculty>=0 && numOfFaculty < faculties.length){
@@ -144,7 +145,7 @@ public class TestClass {
         }
     }
 
-    private static void addStudent(Faculty[] faculties, String name, String lastName, int numOfFaculty, int numOfDepartment, int course, int group) {
+    private static void createStudent(Faculty[] faculties, String name, String lastName, int numOfFaculty, int numOfDepartment, int course, int group) {
         if(name == null) name = "None";
         if(lastName == null) lastName = "None";
         if(numOfFaculty>=0 && numOfFaculty < faculties.length){

@@ -1,47 +1,10 @@
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.StringTokenizer;
+
 public class Tools {
-
-//    private static void swap(Student[] students, int i, int y) {
-//        Student temp = students[i];
-//        students[i] = students[y];
-//        students[y] = temp;
-//    }
-
-//    public static Student[] sortNames(boolean up, Student[] students) {
-//        initValueArr();
-//        if(students != null && students.length > 1){
-//            for(int x = 1; x < students.length;x++){
-//                for (int y = students.length-1; y >= x; y--) {
-//                    if(up) {
-//                        if (!alphabetCompare(students,y-1,y))
-//                            swap(students, y - 1, y);
-//                    } else {
-//                        if (alphabetCompare(students,y-1,y))
-//                            swap(students, y - 1, y);
-//                    }
-//                }
-//            }
-//        }
-//        return students;
-//    }
-
-//    private static boolean alphabetCompare(Student[] students,int i, int y) {
-//        String s0 = students[i].getName();
-//        String s1 = students[y].getName();
-//        boolean flag = s0.length() <= s1.length();
-//        for(int x = 0;x < s0.length() && x < s1.length();x++){
-//            char c0 = Character.toUpperCase(s0.charAt(x));
-//            char c1 = Character.toUpperCase(s1.charAt(x));
-//            if(value[c0] < value[c1]){
-//                flag = true;
-//                break;
-//            } else if(value[c0] > value[c1]) {
-//                flag = false;
-//                break;
-//            }
-//        }
-//        return flag;
-//    }
-
 
     public static Student[] sortCourse(boolean up, Student[] students) {
         if(students != null && students.length > 1){
@@ -165,16 +128,6 @@ public class Tools {
         value[90]=59;
     }
 
-//    public static String getStringStudents(Student[] students){
-//        String str = "";
-//        if(students != null){
-//            for(int i = 0;i<students.length;i++){
-//               str+=students[i].toString()+"\n";
-//            }
-//        }
-//        return str;
-//    }
-
     public static String getStringPerson(Person[] people){
         String str = "";
         if(people != null){
@@ -214,14 +167,6 @@ public class Tools {
 
         return teachersTemp;
     }
-
-//    private static Student[] addStudent(Student[] studArr, Student student){
-//        Student[] studArrTemp = new Student[studArr.length+1];
-//        System.arraycopy(studArr,0,studArrTemp,0,studArr.length);
-//        studArrTemp[studArr.length] = student;
-//        studArr = studArrTemp;
-//        return studArr;
-//    }
 
     public static Person[] addPerson(Student[] people, Student person){
         Student[] peopleTemp = new Student[people.length+1];
@@ -291,26 +236,6 @@ public class Tools {
         }
     }
 
-//    public static Student[] findStudentsName(Student[] students, String name){
-//        Student[] studentList = {};
-//        for(int j = 0; j<students.length;j++) {
-//            boolean find = false;
-//            if (name.length()<=students[j].getName().length()) {
-//                for (int i = 0; i < name.length(); i++) {
-//                    if (students[j].getName().charAt(i) == name.charAt(i)) find = true;
-//                    else {
-//                        find = false;
-//                        break;
-//                    }
-//                }
-//            }
-//            if (find==true){
-//                studentList = (Student[]) addPerson(studentList,students[j]);
-//            }
-//        }
-//        return studentList;
-//    }
-
     public static Person[] findPersonName(Person[] people, String name){
         Person[] peopleList = {};
         for(int j = 0; j<people.length;j++) {
@@ -351,26 +276,6 @@ public class Tools {
         return peopleList;
     }
 
-//    public static Student[] findStudentsLastName(Student[] students, String name){
-//        Student[] studentList = {};
-//        for(int j = 0; j<students.length;j++) {
-//            boolean find = false;
-//            if (name.length()<=students[j].getLastName().length()) {
-//                for (int i = 0; i < name.length(); i++) {
-//                    if (students[j].getLastName().charAt(i) == name.charAt(i)) find = true;
-//                    else {
-//                        find = false;
-//                        break;
-//                    }
-//                }
-//            }
-//            if (find==true){
-//                studentList = (Student[]) addPerson(studentList,students[j]);
-//            }
-//        }
-//        return studentList;
-//    }
-
     public static Student[] findStudentCourse(int course, Student[] students){
         if (course>6) course=6;
         if (course<1) course=1;
@@ -388,5 +293,105 @@ public class Tools {
             if (students[j].getGroup()== group) addPerson(studentList,students[j]);
         }
         return studentList;
+    }
+
+    public static Faculty[] addFaculty(Faculty[] faculties, Faculty faculty){
+        Faculty[] facultiesTemporary = new Faculty[faculties.length+1];
+        System.arraycopy(faculties,0,facultiesTemporary,0,faculties.length);
+        facultiesTemporary[faculties.length] = faculty;
+        return facultiesTemporary;
+    }
+
+    public static void readDepartments(Faculty[] ourFaculties){
+        try {
+            BufferedReader rf = new BufferedReader(new FileReader("departments.txt"));
+            String departmentLine = rf.readLine();
+            while (departmentLine != null){
+                StringTokenizer tokenizer = new StringTokenizer(departmentLine,"|");
+                String nameOfDepartments = tokenizer.nextToken();
+                int numOfFaculty = Integer.valueOf(tokenizer.nextToken());
+                ourFaculties[numOfFaculty].addDepartment(nameOfDepartments);
+                departmentLine = rf.readLine();
+            }
+            rf.close();
+        }catch (FileNotFoundException ex){
+            System.out.println("Проблема з файлом");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static Faculty[] readFaculty(){
+        Faculty[] faculties = {};
+        try {
+            BufferedReader rf = new BufferedReader(new FileReader("faculties.txt"));
+            String facultyLine = rf.readLine();
+            while (facultyLine != null){
+                faculties = addFaculty(faculties,new Faculty(facultyLine));
+                facultyLine = rf.readLine();
+
+            }
+            rf.close();
+        }catch (FileNotFoundException ex){
+            System.out.println("Проблема з файлом");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return faculties;
+    }
+
+    public static void readPeople(Faculty[] faculties){
+        try {
+            BufferedReader rf = new BufferedReader(new FileReader("people.txt"));
+            String personLine = rf.readLine();
+            while (personLine != null){
+                StringTokenizer tokenizer = new StringTokenizer(personLine,"|");
+                String profession = tokenizer.nextToken();
+                String name = tokenizer.nextToken();
+                String lastName = tokenizer.nextToken();
+                int numOfFaculty = Integer.valueOf(tokenizer.nextToken());
+                int numOfDepartment = Integer.valueOf(tokenizer.nextToken());
+                if(profession.equals("Student")){
+                    int course = Integer.valueOf(tokenizer.nextToken());
+                    int group = Integer.valueOf(tokenizer.nextToken());
+                    createStudent(faculties,name,lastName,numOfFaculty,numOfDepartment,course,group);
+                } else if(profession.equals("Teacher")){
+                    createTeacher(faculties,name,lastName,numOfFaculty,numOfDepartment);
+                }
+                personLine = rf.readLine();
+            }
+            rf.close();
+        }catch (FileNotFoundException ex){
+            System.out.println("Проблема з файлом");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private static void createTeacher(Faculty[] faculties, String name, String lastName, int numOfFaculty, int numOfDepartment) {
+        if(name == null) name = "None";
+        if(lastName == null) lastName = "None";
+        if(numOfFaculty>=0 && numOfFaculty < faculties.length){
+            if(numOfDepartment>=0 && numOfDepartment < faculties[numOfFaculty].departmentsLength()){
+                faculties[numOfFaculty].departmentIndex(numOfDepartment).
+                        addTeacher(new Teacher(name,lastName,faculties[numOfFaculty],
+                                faculties[numOfFaculty].departmentIndex(numOfDepartment)));
+            }
+        }
+    }
+
+    private static void createStudent(Faculty[] faculties, String name, String lastName, int numOfFaculty, int numOfDepartment, int course, int group) {
+        if(name == null) name = "None";
+        if(lastName == null) lastName = "None";
+        if(numOfFaculty>=0 && numOfFaculty < faculties.length){
+            if(numOfDepartment>=0 && numOfDepartment < faculties[numOfFaculty].departmentsLength()){
+                faculties[numOfFaculty].departmentIndex(numOfDepartment).
+                        addStudent(new Student(name,lastName,faculties[numOfFaculty],
+                                faculties[numOfFaculty].departmentIndex(numOfDepartment),
+                                course,group));
+            }
+        }
+
+
     }
 }
