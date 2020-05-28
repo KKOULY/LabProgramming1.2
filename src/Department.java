@@ -58,7 +58,7 @@ public class Department{
     }
     public void deleteTeacher(int numberOfTeacher){
         if (numberOfTeacher<=teachers.length && numberOfTeacher>=0) {
-            Teacher[] teacherListNow = new Teacher[students.length - 1];
+            Teacher[] teacherListNow = new Teacher[teachers.length - 1];
             int numberTeachers=0;
             for (int i=0; i<teachers.length;i++){
                 if (i!=numberOfTeacher) {

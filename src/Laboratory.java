@@ -472,8 +472,8 @@ public class Laboratory {
                                     int numDep1 = DataInput.getInt("Введіть порядковий номер кафедри: ");
                                     if (numDep1 >= 0 && numDep1 < faculties[num1].departmentsLength()) {
                                         faculties[num1].departmentIndex(numDep1).addTeacher(faculties[num].departmentIndex(num).teacherIndex(changeTeacher));
-                                        faculties[num].departmentIndex(num).studentIndex(changeTeacher).setPersonFaculty(faculties[num1]);
-                                        faculties[num].departmentIndex(num).studentIndex(changeTeacher).setPersonDepartment(faculties[num1].departmentIndex(numDep1));
+                                        faculties[num].departmentIndex(num).teacherIndex(changeTeacher).setPersonFaculty(faculties[num1]);
+                                        faculties[num].departmentIndex(num).teacherIndex(changeTeacher).setPersonDepartment(faculties[num1].departmentIndex(numDep1));
                                         faculties[num].departmentIndex(numDep).deleteTeacher(changeTeacher);
                                     }
                                 }
