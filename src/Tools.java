@@ -486,4 +486,11 @@ public class Tools {
             e.printStackTrace();
         }
     }
+
+    public static void createDepartment(String nameOfDepartment, Faculty[] faculties, int numberOfFaculty){
+        if (numberOfFaculty>=0 && numberOfFaculty<faculties.length) {
+            faculties[numberOfFaculty].addDepartment(nameOfDepartment);
+            Tools.saveDepartments(faculties);
+        }
+    }
 }
