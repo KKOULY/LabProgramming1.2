@@ -199,7 +199,7 @@ public class Tools {
     }
 
     //перевіряє чи це слово(в стрічці тільки букви)
-    public boolean isWord(String word){
+    public static boolean isWord(String word){
         for(int i =0; i<word.length(); i++) {
             if (!Character.isLetter(word.charAt(i))) {
                 return false;
@@ -208,12 +208,13 @@ public class Tools {
         return true;
     }
     //робить першу літеру великою, а всі наступні маленькими + не пропускає далі поки не введеш слово
-    public String checkName(String whatToWrite) {
+    public static String checkName(String whatToWrite) {
         String realName = "";
         while (true) {
             String name = DataInput.getString(whatToWrite);
             if (name.equals("")) {
-                return "немає в базі";
+                System.out.println("Ви нічого не ввели");
+                continue;
             }
             if (!isWord(name)) {
                 System.out.println("Ви ввели недопустимі символи!");
@@ -234,7 +235,46 @@ public class Tools {
             return realName;
         }
     }
-
+    public static boolean isWordList(String wordList){
+        if (wordList.charAt(0)==' ') return false;
+        boolean space=false;
+        for(int i =0; i<wordList.length(); i++) {
+            if (space==true && wordList.charAt(i)==' ') return false;
+            else space=false;
+            if (!Character.isLetter(wordList.charAt(i)) && wordList.charAt(i)!=' ') {
+                return false;
+            }
+            if (wordList.charAt(i)==' ')  space=true;
+        }
+        return true;
+    }
+    public static String checkTitle(String whatToWrite) {
+        String realName = "";
+        while (true) {
+            String name = DataInput.getString(whatToWrite);
+            if (name.equals("")) {
+                System.out.println("Ви нічого не ввели");
+                continue;
+            }
+            if (!isWordList(name)) {
+                System.out.println("Ви ввели недопустимі символи!");
+                continue;
+            }
+            if (Character.isLowerCase(name.charAt(0))) {
+                char newLetter = Character.toUpperCase(name.charAt(0));
+                realName = realName + newLetter;
+            } else realName = realName + name.charAt(0);
+            if (name.length() > 1) {
+                for (int i = 1; i < name.length(); i++) {
+                    if (Character.isUpperCase(name.charAt(i))) {
+                        char newLetter = Character.toLowerCase(name.charAt(i));
+                        realName = realName + newLetter;
+                    } else realName = realName + name.charAt(i);
+                }
+            }
+            return realName;
+        }
+    }
     public static Person[] findPersonName(Person[] people, String name){
         Person[] peopleList = {};
         for(int j = 0; j<people.length;j++) {

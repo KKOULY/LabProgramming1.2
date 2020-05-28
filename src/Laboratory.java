@@ -106,6 +106,23 @@ public class Laboratory {
             faculties = facultiesTemporary;
         }
     }
-    
+    private static void firstMethod(){
+        int whatToDo = DataInput.getInt("Введіть: 1 - створити факультет, 2 - видалити факультет, 3 - редагувати факультет: ");
+        switch (whatToDo){
+            case 1:
+                addFaculty(Tools.checkTitle("Назва факультету, який ви створюєте: "));
+                break;
+            case 2:
+                for (int i=0; i<faculties.length;i++) System.out.println(i+". "+faculties[i].toString());
+                deleteFaculty(DataInput.getInt("Номер факультету, який потрібно видалити: "));
+                break;
+            case 3:
+                for (int i=0; i<faculties.length;i++) System.out.println(i+". "+faculties[i].toString());
+                int numberOfFaculty = DataInput.getInt("Номер факультету, який потрібно редагувати: ");
+                if (numberOfFaculty>=0 && numberOfFaculty<faculties.length){
+                    faculties[numberOfFaculty].setNameOfFaculty(Tools.checkTitle("Введіть нову назву факультету: "));
+                } else System.out.println("Такого факультету не існує!");
+        }
+    }
 
 }
