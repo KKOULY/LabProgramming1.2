@@ -1,7 +1,4 @@
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.util.StringTokenizer;
 
 public class Tools {
@@ -385,6 +382,36 @@ public class Tools {
             }
         }
 
+    }
 
+    public static void saveFaculties(Faculty[] faculties){
+        try {
+            PrintWriter wr = new PrintWriter(new FileWriter("faculties.txt"));
+            for(Faculty a:faculties){
+                wr.println(a.toString());
+            }
+            wr.close();
+        }catch (FileNotFoundException ex){
+            System.out.println("Проблема з файлом");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void saveDepartments(Faculty[] faculties){
+        try {
+            PrintWriter wr = new PrintWriter(new FileWriter("departments.txt"));
+            for(int i = 0;i<faculties.length;i++){
+                Department[] departments = faculties[i].getDepartments();
+                for(Department a : departments){
+                    wr.println(a.toString()+"|"+i);
+                }
+            }
+            wr.close();
+        }catch (FileNotFoundException ex){
+            System.out.println("Проблема з файлом");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

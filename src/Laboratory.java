@@ -29,7 +29,8 @@ public class Laboratory {
         studentsTemp = (Student[]) Tools.sortNames(true,studentsTemp);
         System.out.println(Tools.getStringPerson(studentsTemp));
         System.out.println(Tools.getStringPerson(Tools.findPersonName(studentsTemp,"b")));
-
+        Tools.saveFaculties(faculties);
+        Tools.saveDepartments(faculties);
         startMenu();
     }
 
