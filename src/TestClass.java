@@ -4,16 +4,6 @@ import java.util.StringTokenizer;
 public class TestClass {
     private static Student[] students= new Student[5];
     public static void main(String[] args) {
-
-        Faculty[] faculties = readFaculty();
-        readDepartments(faculties);
-        readPeople(faculties);
-        Department[] firstDepartment = faculties[0].getDepartments();
-        Department[] secondDepartment = faculties[1].getDepartments();
-        System.out.println(firstDepartment[0].toString());
-        System.out.println(secondDepartment[0].toString());
-        System.out.println(Tools.getStringPerson(Tools.getAllStudents(faculties)));
-        System.out.println(Tools.getStringPerson(Tools.getAllTeachers(faculties)));
     }
 //public static Faculty[] readFaculty(){
 //        Faculty[] faculties = {};
@@ -156,8 +146,7 @@ public class TestClass {
                                 course,group));
             }
         }
-
-
     }
+
 }
 

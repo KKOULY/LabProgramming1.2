@@ -414,4 +414,24 @@ public class Tools {
             e.printStackTrace();
         }
     }
+    public void writePeopleList(Faculty[] faculties){
+        Student[] students = Tools.getAllStudents(faculties);
+        Teacher[] teachers = Tools.getAllTeachers(faculties);
+        String s = "";
+        for (int i = 0; i<students.length;i++){
+            s=s+"Student|"+students[i].getName()+"|"+students[i].getLastName()+"|"+students[i].getPersonFaculty()+
+                    "|"+students[i].getPersonDepartment()+"|"+students[i].getCourse()+"|"+students[i].getGroup()+"\n";
+        }
+        for (int i = 0; i<teachers.length;i++){
+            s=s+"Teacher|"+teachers[i].getName()+"|"+teachers[i].getLastName()+"|"+teachers[i].getPersonFaculty()+
+                    "|"+teachers[i].getPersonDepartment()+"\n";
+        }
+        try {
+            PrintWriter wr = new PrintWriter(new FileWriter("people.txt"));
+            wr.println(s);
+            wr.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 }
