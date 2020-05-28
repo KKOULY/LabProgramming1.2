@@ -1,4 +1,6 @@
 import java.io.*;
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.StringTokenizer;
 
 public class Tools {
@@ -339,14 +341,14 @@ public class Tools {
                 String profession = tokenizer.nextToken();
                 String name = tokenizer.nextToken();
                 String lastName = tokenizer.nextToken();
-                int numOfFaculty = Integer.valueOf(tokenizer.nextToken());
-                int numOfDepartment = Integer.valueOf(tokenizer.nextToken());
+                String nameOfFaculty = tokenizer.nextToken();
+                String nameOfDepartment = tokenizer.nextToken();
                 if(profession.equals("Student")){
                     int course = Integer.valueOf(tokenizer.nextToken());
                     int group = Integer.valueOf(tokenizer.nextToken());
-                    createStudent(faculties,name,lastName,numOfFaculty,numOfDepartment,course,group);
+                    createStudent(faculties,name,lastName,nameOfFaculty,nameOfDepartment,course,group);
                 } else if(profession.equals("Teacher")){
-                    createTeacher(faculties,name,lastName,numOfFaculty,numOfDepartment);
+                    createTeacher(faculties,name,lastName,nameOfFaculty,nameOfDepartment);
                 }
                 personLine = rf.readLine();
             }
@@ -358,30 +360,40 @@ public class Tools {
         }
     }
 
-    private static void createTeacher(Faculty[] faculties, String name, String lastName, int numOfFaculty, int numOfDepartment) {
+    private static void createTeacher(Faculty[] faculties, String name,
+                                      String lastName, String nameOfFaculty, String nameOfDepartment) {
         if(name == null) name = "None";
         if(lastName == null) lastName = "None";
-        if(numOfFaculty>=0 && numOfFaculty < faculties.length){
-            if(numOfDepartment>=0 && numOfDepartment < faculties[numOfFaculty].departmentsLength()){
-                faculties[numOfFaculty].departmentIndex(numOfDepartment).
-                        addTeacher(new Teacher(name,lastName,faculties[numOfFaculty],
-                                faculties[numOfFaculty].departmentIndex(numOfDepartment)));
+        for(Faculty a: faculties){
+            if(a.toString().equals(nameOfFaculty)){
+                Department[] departments = a.getDepartments();
+                for(Department b:departments){
+                    if(b.toString().equals(nameOfDepartment)){
+                        b.addTeacher(new Teacher(name,lastName,a,b));
+                    }
+                    break;
+                }
+                break;
             }
         }
     }
 
-    private static void createStudent(Faculty[] faculties, String name, String lastName, int numOfFaculty, int numOfDepartment, int course, int group) {
+    private static void createStudent(Faculty[] faculties, String name,
+                                      String lastName, String nameOfFaculty, String nameOfDepartment, int course, int group) {
         if(name == null) name = "None";
         if(lastName == null) lastName = "None";
-        if(numOfFaculty>=0 && numOfFaculty < faculties.length){
-            if(numOfDepartment>=0 && numOfDepartment < faculties[numOfFaculty].departmentsLength()){
-                faculties[numOfFaculty].departmentIndex(numOfDepartment).
-                        addStudent(new Student(name,lastName,faculties[numOfFaculty],
-                                faculties[numOfFaculty].departmentIndex(numOfDepartment),
-                                course,group));
+        for(Faculty a: faculties){
+            if(a.toString().equals(nameOfFaculty)){
+                Department[] departments = a.getDepartments();
+                for(Department b:departments){
+                    if(b.toString().equals(nameOfDepartment)){
+                        b.addStudent(new Student(name,lastName,a,b,course,group));
+                    }
+                    break;
+                }
+                break;
             }
         }
-
     }
 
     public static void saveFaculties(Faculty[] faculties){
@@ -414,7 +426,7 @@ public class Tools {
             e.printStackTrace();
         }
     }
-    public static void writePeopleList(Faculty[] faculties){
+    public static void savePeople(Faculty[] faculties){
         Student[] students = Tools.getAllStudents(faculties);
         Teacher[] teachers = Tools.getAllTeachers(faculties);
         String s = "";

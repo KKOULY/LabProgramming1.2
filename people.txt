@@ -1,6 +1,10 @@
-Student|Name|LastName|0|0|1|2
-Teacher|Name|LastName|0|0
-Student|Name|LastName|1|0|4|0
-Teacher|Name|LastName|0|0
-Student|test|test|4234|432423|42343|4324
-none|test|test|2|0
+Student|їtud1|stud|fac1|dep11|1|1
+Student|фtud2|stud|fac1|dep11|1|1
+Student|іuud3|stud|fac1|dep12|5|1
+Student|ctud4|stud|fac1|dep12|1|2
+Student|atud5|stud|fac2|dep21|1|2
+Student|bbud6|stud|fac2|dep21|6|1
+Student|gtud7|stud|fac2|dep21|1|1
+Student|stud8|stud|fac2|dep22|3|1
+Student|new|new|fac2|dep22|3|2
+
