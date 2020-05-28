@@ -3,15 +3,17 @@ public class Laboratory {
 
 
     public static void main(String[] args) {
+        Tools.init();
+
         addFaculty("fac1");
         addFaculty("fac2");
         faculties[0].addDepartment("dep11");
         faculties[0].addDepartment("dep12");
         Department dep11 = faculties[0].departmentIndex(0);
-        dep11.addStudent(new Student("etud1","stud",faculties[0],dep11,-20,1));
-        dep11.addStudent(new Student("btud2","stud",faculties[0],dep11,1,1));
+        dep11.addStudent(new Student("їtud1","stud",faculties[0],dep11,-20,1));
+        dep11.addStudent(new Student("фtud2","stud",faculties[0],dep11,1,1));
         Department dep12 = faculties[0].departmentIndex(1);
-        dep12.addStudent(new Student("buud3","stud",faculties[0],dep12,5,1));
+        dep12.addStudent(new Student("іuud3","stud",faculties[0],dep12,5,1));
         dep12.addStudent(new Student("ctud4","stud",faculties[0],dep12,1,50));
         faculties[1].addDepartment("dep21");
         faculties[1].addDepartment("dep22");
@@ -22,11 +24,11 @@ public class Laboratory {
         dep22.addStudent(new Student("gtud7","stud",faculties[1],dep21,1,1));
         dep22.addStudent(new Student("stud8","stud",faculties[1],dep22,3,1));
 
-//        Student[] studentsTemp = Tools.getAllStudents(faculties);
-//        System.out.println(Tools.getStringPerson(studentsTemp));
-//        studentsTemp = (Student[]) Tools.sortCourse(true,studentsTemp);
-//        System.out.println(Tools.getStringPerson(studentsTemp));
-//        System.out.println(Tools.getStringPerson(Tools.findPersonName(studentsTemp,"b")));
+        Student[] studentsTemp = Tools.getAllStudents(faculties);
+        System.out.println(Tools.getStringPerson(studentsTemp));
+        studentsTemp = (Student[]) Tools.sortNames(true,studentsTemp);
+        System.out.println(Tools.getStringPerson(studentsTemp));
+        System.out.println(Tools.getStringPerson(Tools.findPersonName(studentsTemp,"b")));
 
         startMenu();
     }
