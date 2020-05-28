@@ -295,13 +295,6 @@ public class Tools {
         return studentList;
     }
 
-    public static Faculty[] addFaculty(Faculty[] faculties, Faculty faculty){
-        Faculty[] facultiesTemporary = new Faculty[faculties.length+1];
-        System.arraycopy(faculties,0,facultiesTemporary,0,faculties.length);
-        facultiesTemporary[faculties.length] = faculty;
-        return facultiesTemporary;
-    }
-
     public static void readDepartments(Faculty[] ourFaculties){
         try {
             BufferedReader rf = new BufferedReader(new FileReader("departments.txt"));
