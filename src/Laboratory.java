@@ -4,36 +4,9 @@ public class Laboratory {
 
     public static void main(String[] args) {
         Tools.init();
-
-        addFaculty("fac1");
-        addFaculty("fac2");
-        faculties[0].addDepartment("dep11");
-        faculties[0].addDepartment("dep12");
-        Department dep11 = faculties[0].departmentIndex(0);
-        dep11.addStudent(new Student("їtud1","stud",faculties[0],dep11,-20,1));
-        dep11.addStudent(new Student("фtud2","stud",faculties[0],dep11,1,1));
-        Department dep12 = faculties[0].departmentIndex(1);
-        dep12.addStudent(new Student("іuud3","stud",faculties[0],dep12,5,1));
-        dep12.addStudent(new Student("ctud4","stud",faculties[0],dep12,1,50));
-        faculties[1].addDepartment("dep21");
-        faculties[1].addDepartment("dep22");
-        Department dep21 = faculties[1].departmentIndex(0);
-        dep21.addStudent(new Student("atud5","stud",faculties[1],dep21,1,2));
-        dep21.addStudent(new Student("bbud6","stud",faculties[1],dep21,8,1));
-        Department dep22 = faculties[1].departmentIndex(1);
-        dep22.addStudent(new Student("gtud7","stud",faculties[1],dep21,1,1));
-        dep22.addStudent(new Student("stud8","stud",faculties[1],dep22,3,1));
-
-        Student[] studentsTemp = Tools.getAllStudents(faculties);
-        System.out.println(Tools.getStringPerson(studentsTemp));
-        studentsTemp = (Student[]) Tools.sortNames(true,studentsTemp);
-        System.out.println(Tools.getStringPerson(studentsTemp));
-        System.out.println(Tools.getStringPerson(Tools.findPersonName(studentsTemp,"b")));
-        Tools.saveFaculties(faculties);
-        Tools.saveDepartments(faculties);
-        Tools.savePeople(faculties);
-        dep22.addStudent(new Student("new","new",faculties[1],dep22,3,3));
-        Tools.savePeople(faculties);
+        faculties = Tools.readFaculty();
+        Tools.readDepartments(faculties);
+        Tools.readPeople(faculties);
         startMenu();
     }
 
@@ -64,6 +37,8 @@ public class Laboratory {
             case 1:
                 break;
             case 2:
+                System.out.println("Створити/видалити/редагувати кафедру факультета");
+                CreateDeleteChangeDepartments();
                 break;
             case 3:
                 break;
@@ -83,6 +58,41 @@ public class Laboratory {
                 break;
             default:
                 System.out.println("Некоректний номер");
+        }
+    }
+
+    private static void CreateDeleteChangeDepartments() {
+        System.out.println("Всі факультети: ");
+        for(int i = 0;i<faculties.length;i++){
+            System.out.println(i+". "+faculties[i].toString());
+        }
+        int num = DataInput.getInt("Виберіть факультет: ");
+
+        if(num >= 0 || num < faculties.length){
+            System.out.println("Всі кафедри факультету: " + faculties[num].toString());
+            for(int g = 0;g<faculties[num].departmentsLength();g++){
+                System.out.println(g+". "+faculties[num].departmentIndex(g));
+            }
+            System.out.println("1. Створити нову кафедру");
+            System.out.println("2. Видалити/Редагувати кафедру");
+            int choice = DataInput.getInt("Введіть значення: ");
+            if(choice == 1){
+                System.out.println("Створення нової кафедри");
+                String s = DataInput.getString("Введіть назву нової кафедри:");
+                Tools.createDepartment(s,faculties,num);
+            }
+            if(choice == 2){
+                int numDep = DataInput.getInt("Введіть значення: ");
+                if(numDep >=0 && numDep < faculties[num].departmentsLength()){
+                    System.out.println("Кафедра: "+ faculties[num].departmentIndex(numDep).toString()+" (1-Видалити/2-Редагувати)");
+                    int choice2 = DataInput.getInt("Введіть значення: ");
+                    if(choice2 == 1) faculties[num].deleteDepartment(numDep);
+                    else if(choice2 == 2){
+                        String newName = DataInput.getString("Введіть нову назву: ");
+                        faculties[num].departmentIndex(numDep).setNameOfDepartment(newName);
+                    }
+                }
+            }
         }
     }
 

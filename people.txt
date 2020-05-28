@@ -7,4 +7,3 @@ Student|bbud6|stud|fac2|dep21|6|1
 Student|gtud7|stud|fac2|dep21|1|1
 Student|stud8|stud|fac2|dep22|3|1
 Student|new|new|fac2|dep22|3|2
-
