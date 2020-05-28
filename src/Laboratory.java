@@ -106,7 +106,6 @@ public class Laboratory {
             faculties = facultiesTemporary;
         }
     }
-
-
+    
 
 }
