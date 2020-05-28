@@ -103,7 +103,7 @@ public class Tools {
 
     private static int[] value = new int[1169];
 
-    public static void initValueArr(){
+    {
         value[1040]=1;
         value[1041]=2;
         value[1042]=3;
