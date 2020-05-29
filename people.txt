@@ -1,9 +1,5 @@
-Student|їtud1|stud|fac1|dep11|1|1
-Student|фtud2|stud|fac1|dep11|1|1
-Student|іuud3|stud|fac1|dep12|5|1
-Student|ctud4|stud|fac1|dep12|1|2
-Student|atud5|stud|fac2|dep21|1|2
-Student|bbud6|stud|fac2|dep21|6|1
-Student|gtud7|stud|fac2|dep21|1|1
-Student|stud8|stud|fac2|dep22|3|1
-Student|new|new|fac2|dep22|3|2
+Student|Петро|Іваненко|ФІ|Кафедра математики|1|2
+Student|Андрій|Козак|ФІ|Кафедра математики|6|1
+Student|Павло|Кулик|ФІ|Кафедра математики|1|2
+Student|Тарас|Кулик|ФІ|Кафедра інформатики|1|1
+Student|Іван|Петренко|ФІ|Кафедра інформатики|2|2

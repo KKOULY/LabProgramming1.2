@@ -429,8 +429,8 @@ public class Tools {
                 for(Department b:departments){
                     if(b.toString().equals(nameOfDepartment)){
                         b.addStudent(new Student(name,lastName,a,b,course,group));
+                        break;
                     }
-                    break;
                 }
                 break;
             }

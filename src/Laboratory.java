@@ -13,6 +13,7 @@ public class Laboratory {
     private static void startMenu() {
         int choice;
         do{
+            System.out.println();
             System.out.println("0. Вихід");
             System.out.println("1. Створити/Видалити/Редагувати факультет");
             System.out.println("2. Створити/видалити/редагувати кафедру факультета.");
@@ -31,6 +32,7 @@ public class Laboratory {
     }
 
     private static void UserChoice(int choice) {
+        System.out.println();
         switch (choice){
             case 0:
                 System.out.println("Робота програми завершена");
@@ -48,10 +50,12 @@ public class Laboratory {
                 addDeleteStudentTeachers();
                 break;
             case 4:
-                System.out.println("Знайти студента/викладача за ПІБ, курсом або групою.");
-                findStudentOfTeacher();
+                System.out.println("Знайти студента/викладача за ПІБ, курсом або групою");
+                findStudentOrTeacher();
                 break;
             case 5:
+                System.out.println("Вивести всіх студентів впорядкованих за курсами");
+                printAllStudentsSortByCourse();
                 break;
             case 6:
                 break;
@@ -66,6 +70,14 @@ public class Laboratory {
             default:
                 System.out.println("Некоректний номер");
         }
+        DataInput.getString("Натисніть enter, щоб продовжити ");
+    }
+
+    private static void printAllStudentsSortByCourse() {
+        System.out.println();
+        Student[] students = Tools.getAllStudents(faculties);
+        Tools.sortCourse(true,students);
+        System.out.println(Tools.getStringPerson(students));
     }
 
     private static void CreateDeleteChangeDepartments() {
@@ -145,7 +157,7 @@ public class Laboratory {
         }
         Tools.saveFaculties(faculties);
     }
-    private static void findStudentOfTeacher(){
+    private static void findStudentOrTeacher(){
         switch (DataInput.getInt("Введіть: 1 - шукати студента, 2 - шукати викладача: ")){
             case 1:
                 int whatDo = DataInput.getInt("Введіть: 1 - шукати за ім'ям, 2 - за прізвищем, 3 - курсом, 4 - групою: ");
@@ -168,7 +180,7 @@ public class Laboratory {
                 }
                 if (whatDo==4){
                     Student[] listOfStudents = Tools.getAllStudents(faculties);
-                    int group = DataInput.getInt("Номер курсу: ");
+                    int group = DataInput.getInt("Номер групи: ");
                     if (group>=1 && group<=2) {
                         for (Student i : listOfStudents) {
                             if (i.getGroup() == group) System.out.println(i.toString());
