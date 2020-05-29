@@ -66,10 +66,16 @@ public class Laboratory {
                 printAllStudentsSortByCourseInFaculty();
                 break;
             case 8:
+                System.out.println("Вивести всіх студентів/викладачів кафедри впорядкованих за алфавітом.");
+                printAllStudentsOrTeachersOnDepartmentAlp();
                 break;
             case 9:
+                System.out.println("Вивести всіх студентів кафедри вказаного курсу.");
+                allDepartmentStudentsCourse();
                 break;
             case 10:
+                System.out.println("Вивести всіх студентів кафедри вказаного курсу впорядкованих за алфавітом.");
+                allDepartmentStudentsCourseAlp();
                 break;
             default:
                 System.out.println("Некоректний номер");
@@ -653,5 +659,99 @@ public class Laboratory {
                 break;
         }
         Tools.savePeople(faculties);
+    }
+    private static void printAllStudentsOrTeachersOnDepartmentAlp(){
+        System.out.println("Всі факультети: ");
+        for(int i = 0;i<faculties.length;i++){
+            System.out.println(i+". "+faculties[i].toString());
+        }
+        int num = DataInput.getInt("Виберіть факультет: ");
+        if(num >= 0 && num < faculties.length) {
+            System.out.println("Всі кафедри факультету: " + faculties[num].toString());
+            for (int g = 0; g < faculties[num].departmentsLength(); g++) {
+                System.out.println(g + ". " + faculties[num].departmentIndex(g));
+            }
+            int numDep = DataInput.getInt("Введіть порядковий номер кафедри: ");
+            if(numDep >=0 && numDep < faculties[num].departmentsLength()) {
+                int who = DataInput.getInt("Вивети студентів - 1, вивести викладачів - 2:");
+                if (who==1){
+                    Student[] students = faculties[num].departmentIndex(numDep).getStudents();
+                    if (students.length>0){
+                        Tools.sortNames(true,students);
+                        System.out.println(Tools.getStringPerson(students));
+                    }
+                }
+                if (who == 2 ){
+                    Teacher[] teachers = faculties[num].departmentIndex(numDep).getTeachers();
+                    if (teachers.length>0){
+                        Tools.sortNames(true,teachers);
+                        System.out.println(Tools.getStringPerson(teachers));
+                    }
+                }
+            }
+            }
+    }
+    private static void allDepartmentStudentsCourse(){
+        System.out.println("Всі факультети: ");
+        for(int i = 0;i<faculties.length;i++){
+            System.out.println(i+". "+faculties[i].toString());
+        }
+        int num = DataInput.getInt("Виберіть факультет: ");
+        if(num >= 0 && num < faculties.length) {
+            System.out.println("Всі кафедри факультету: " + faculties[num].toString());
+            for (int g = 0; g < faculties[num].departmentsLength(); g++) {
+                System.out.println(g + ". " + faculties[num].departmentIndex(g));
+            }
+            int numDep = DataInput.getInt("Введіть порядковий номер кафедри: ");
+            if(numDep >=0 && numDep < faculties[num].departmentsLength()) {
+                Student[] students = faculties[num].departmentIndex(numDep).getStudents();
+                if (students.length>0){
+                    int course = DataInput.getInt("Введіть курс: ");
+                    if (course>0 && course<7) {
+                        Student[] studentsCourse={};
+                        for (Student i : students){
+                            if (course==i.getCourse()){
+                                studentsCourse= (Student[]) Tools.addPerson(studentsCourse,i);
+                            }
+                        }
+                        if (studentsCourse.length!=0){
+                            System.out.println(Tools.getStringPerson(studentsCourse));
+                        }
+                    }
+                }
+            }
+            }
+    }
+    private static void allDepartmentStudentsCourseAlp(){
+        System.out.println("Всі факультети: ");
+        for(int i = 0;i<faculties.length;i++){
+            System.out.println(i+". "+faculties[i].toString());
+        }
+        int num = DataInput.getInt("Виберіть факультет: ");
+        if(num >= 0 && num < faculties.length) {
+            System.out.println("Всі кафедри факультету: " + faculties[num].toString());
+            for (int g = 0; g < faculties[num].departmentsLength(); g++) {
+                System.out.println(g + ". " + faculties[num].departmentIndex(g));
+            }
+            int numDep = DataInput.getInt("Введіть порядковий номер кафедри: ");
+            if(numDep >=0 && numDep < faculties[num].departmentsLength()) {
+                Student[] students = faculties[num].departmentIndex(numDep).getStudents();
+                if (students.length>0){
+                    int course = DataInput.getInt("Введіть курс: ");
+                    if (course>0 && course<7) {
+                        Student[] studentsCourse={};
+                        for (Student i : students){
+                            if (course==i.getCourse()){
+                                studentsCourse= (Student[]) Tools.addPerson(studentsCourse,i);
+                            }
+                        }
+                        if (studentsCourse.length!=0){
+                            Tools.sortNames(true,studentsCourse);
+                            System.out.println(Tools.getStringPerson(studentsCourse));
+                        }
+                    }
+                }
+            }
+        }
     }
 }

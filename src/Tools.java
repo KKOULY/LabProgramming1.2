@@ -54,8 +54,8 @@ public class Tools {
         return true;
     }
     private static boolean alphabetCompare(Person[] people,int i, int y) {
-        String s0 = people[i].getName();
-        String s1 = people[y].getName();
+        String s0 = people[i].getName()+people[i].getLastName();
+        String s1 = people[y].getName()+people[y].getLastName();
         boolean flag = s0.length() <= s1.length();
         for(int x = 0;x < s0.length() && x < s1.length();x++){
             char c0 = Character.toUpperCase(s0.charAt(x));
