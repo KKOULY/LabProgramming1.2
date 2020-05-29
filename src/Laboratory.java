@@ -255,6 +255,7 @@ public class Laboratory {
                     for (Person i : findTeachers) System.out.println(i.toString());
                 }
                 break;
+            default: System.out.println("Ви ввели невірні дані");
         }
     }
     public static void addDeleteStudentTeachers(){
@@ -267,7 +268,7 @@ public class Laboratory {
                         System.out.println(i+". "+faculties[i].toString());
                     }
                     int num = DataInput.getInt("Виберіть факультет: ");
-                    if(num >= 0 || num < faculties.length) {
+                    if(num >= 0 && num < faculties.length) {
                         System.out.println("Всі кафедри факультету: " + faculties[num].toString());
                         for (int g = 0; g < faculties[num].departmentsLength(); g++) {
                             System.out.println(g + ". " + faculties[num].departmentIndex(g));
@@ -296,7 +297,7 @@ public class Laboratory {
                         System.out.println(i + ". " + faculties[i].toString());
                     }
                     int num = DataInput.getInt("Виберіть факультет: ");
-                    if (num >= 0 || num < faculties.length) {
+                    if (num >= 0 && num < faculties.length) {
                         System.out.println("Всі кафедри факультету: " + faculties[num].toString());
                         for (int g = 0; g < faculties[num].departmentsLength(); g++) {
                             System.out.println(g + ". " + faculties[num].departmentIndex(g));
@@ -304,6 +305,10 @@ public class Laboratory {
                         int numDep = DataInput.getInt("Введіть порядковий номер кафедри: ");
                         if (numDep >= 0 && numDep < faculties[num].departmentsLength()) {
                             Student[] listStudents = faculties[num].departmentIndex(numDep).getStudents();
+                            if (listStudents.length==0){
+                                System.out.println("В цій кафедрі немає студентів");
+                                break;
+                            }
                             System.out.println("Всі студенти кафедри");
                             for (int q=0;q<listStudents.length;q++){
                                 System.out.println(q+". "+listStudents[q].toString());
@@ -321,7 +326,7 @@ public class Laboratory {
                         System.out.println(i + ". " + faculties[i].toString());
                     }
                     int num = DataInput.getInt("Виберіть факультет: ");
-                    if (num >= 0 || num < faculties.length) {
+                    if (num >= 0 && num < faculties.length) {
                         System.out.println("Всі кафедри факультету: " + faculties[num].toString());
                         for (int g = 0; g < faculties[num].departmentsLength(); g++) {
                             System.out.println(g + ". " + faculties[num].departmentIndex(g));
@@ -329,6 +334,10 @@ public class Laboratory {
                         int numDep = DataInput.getInt("Введіть порядковий номер кафедри: ");
                         if (numDep >= 0 && numDep < faculties[num].departmentsLength()) {
                             Student[] listStudents = faculties[num].departmentIndex(numDep).getStudents();
+                            if (listStudents.length==0){
+                                System.out.println("В цій кафедрі немає студентів");
+                                break;
+                            }
                             System.out.println("Всі студенти кафедри");
                             for (int q=0;q<listStudents.length;q++){
                                 System.out.println(q+". "+listStudents[q].toString());
@@ -342,7 +351,7 @@ public class Laboratory {
                                     System.out.println(i + ". " + faculties[i].toString());
                                 }
                                 int num1 = DataInput.getInt("Виберіть факультет: ");
-                                if (num1 >= 0 || num1 < faculties.length) {
+                                if (num1 >= 0 && num1 < faculties.length) {
                                     System.out.println("Всі кафедри факультету: " + faculties[num1].toString());
                                     for (int g = 0; g < faculties[num1].departmentsLength(); g++) {
                                         System.out.println(g + ". " + faculties[num1].departmentIndex(g));
@@ -365,7 +374,7 @@ public class Laboratory {
                         System.out.println(i + ". " + faculties[i].toString());
                     }
                     int num = DataInput.getInt("Виберіть факультет: ");
-                    if (num >= 0 || num < faculties.length) {
+                    if (num >= 0 && num < faculties.length) {
                         System.out.println("Всі кафедри факультету: " + faculties[num].toString());
                         for (int g = 0; g < faculties[num].departmentsLength(); g++) {
                             System.out.println(g + ". " + faculties[num].departmentIndex(g));
@@ -373,6 +382,10 @@ public class Laboratory {
                         int numDep = DataInput.getInt("Введіть порядковий номер кафедри: ");
                         if (numDep >= 0 && numDep < faculties[num].departmentsLength()) {
                             Student[] listStudents = faculties[num].departmentIndex(numDep).getStudents();
+                            if (listStudents.length==0){
+                                System.out.println("В цій кафедрі немає студентів");
+                                break;
+                            }
                             System.out.println("Всі студенти кафедри");
                             for (int q=0;q<listStudents.length;q++){
                                 System.out.println(q+". "+listStudents[q].toString());
@@ -390,7 +403,7 @@ public class Laboratory {
                         System.out.println(i + ". " + faculties[i].toString());
                     }
                     int num = DataInput.getInt("Виберіть факультет: ");
-                    if (num >= 0 || num < faculties.length) {
+                    if (num >= 0 && num < faculties.length) {
                         System.out.println("Всі кафедри факультету: " + faculties[num].toString());
                         for (int g = 0; g < faculties[num].departmentsLength(); g++) {
                             System.out.println(g + ". " + faculties[num].departmentIndex(g));
@@ -398,6 +411,10 @@ public class Laboratory {
                         int numDep = DataInput.getInt("Введіть порядковий номер кафедри: ");
                         if (numDep >= 0 && numDep < faculties[num].departmentsLength()) {
                             Student[] listStudents = faculties[num].departmentIndex(numDep).getStudents();
+                            if (listStudents.length==0){
+                                System.out.println("В цій кафедрі немає студентів");
+                                break;
+                            }
                             System.out.println("Всі студенти кафедри");
                             for (int q=0;q<listStudents.length;q++){
                                 System.out.println(q+". "+listStudents[q].toString());
@@ -415,7 +432,7 @@ public class Laboratory {
                         System.out.println(i + ". " + faculties[i].toString());
                     }
                     int num = DataInput.getInt("Виберіть факультет: ");
-                    if (num >= 0 || num < faculties.length) {
+                    if (num >= 0 && num < faculties.length) {
                         System.out.println("Всі кафедри факультету: " + faculties[num].toString());
                         for (int g = 0; g < faculties[num].departmentsLength(); g++) {
                             System.out.println(g + ". " + faculties[num].departmentIndex(g));
@@ -423,6 +440,10 @@ public class Laboratory {
                         int numDep = DataInput.getInt("Введіть порядковий номер кафедри: ");
                         if (numDep >= 0 && numDep < faculties[num].departmentsLength()) {
                             Student[] listStudents = faculties[num].departmentIndex(numDep).getStudents();
+                            if (listStudents.length==0){
+                                System.out.println("В цій кафедрі немає студентів");
+                                break;
+                            }
                             System.out.println("Всі студенти кафедри");
                             for (int q=0;q<listStudents.length;q++){
                                 System.out.println(q+". "+listStudents[q].toString());
@@ -440,7 +461,7 @@ public class Laboratory {
                         System.out.println(i + ". " + faculties[i].toString());
                     }
                     int num = DataInput.getInt("Виберіть факультет: ");
-                    if (num >= 0 || num < faculties.length) {
+                    if (num >= 0 && num < faculties.length) {
                         System.out.println("Всі кафедри факультету: " + faculties[num].toString());
                         for (int g = 0; g < faculties[num].departmentsLength(); g++) {
                             System.out.println(g + ". " + faculties[num].departmentIndex(g));
@@ -448,6 +469,10 @@ public class Laboratory {
                         int numDep = DataInput.getInt("Введіть порядковий номер кафедри: ");
                         if (numDep >= 0 && numDep < faculties[num].departmentsLength()) {
                             Student[] listStudents = faculties[num].departmentIndex(numDep).getStudents();
+                            if (listStudents.length==0){
+                                System.out.println("В цій кафедрі немає студентів");
+                                break;
+                            }
                             System.out.println("Всі студенти кафедри");
                             for (int q=0;q<listStudents.length;q++){
                                 System.out.println(q+". "+listStudents[q].toString());
@@ -468,7 +493,7 @@ public class Laboratory {
                         System.out.println(i+". "+faculties[i].toString());
                     }
                     int num = DataInput.getInt("Виберіть факультет: ");
-                    if(num >= 0 || num < faculties.length) {
+                    if(num >= 0 && num < faculties.length) {
                         System.out.println("Всі кафедри факультету: " + faculties[num].toString());
                         for (int g = 0; g < faculties[num].departmentsLength(); g++) {
                             System.out.println(g + ". " + faculties[num].departmentIndex(g));
@@ -486,7 +511,7 @@ public class Laboratory {
                         System.out.println(i + ". " + faculties[i].toString());
                     }
                     int num = DataInput.getInt("Виберіть факультет: ");
-                    if (num >= 0 || num < faculties.length) {
+                    if (num >= 0 && num < faculties.length) {
                         System.out.println("Всі кафедри факультету: " + faculties[num].toString());
                         for (int g = 0; g < faculties[num].departmentsLength(); g++) {
                             System.out.println(g + ". " + faculties[num].departmentIndex(g));
@@ -494,6 +519,10 @@ public class Laboratory {
                         int numDep = DataInput.getInt("Введіть порядковий номер кафедри: ");
                         if (numDep >= 0 && numDep < faculties[num].departmentsLength()) {
                             Teacher[] listTeachers = faculties[num].departmentIndex(numDep).getTeachers();
+                            if (listTeachers.length==0){
+                                System.out.println("В цій кафедрі немає викладачів");
+                                break;
+                            }
                             System.out.println("Всі викладачі кафедри");
                             for (int q=0;q<listTeachers.length;q++){
                                 System.out.println(q+". "+listTeachers[q].toString());
@@ -511,7 +540,7 @@ public class Laboratory {
                         System.out.println(i + ". " + faculties[i].toString());
                     }
                     int num = DataInput.getInt("Виберіть факультет: ");
-                    if (num >= 0 || num < faculties.length) {
+                    if (num >= 0 && num < faculties.length) {
                         System.out.println("Всі кафедри факультету: " + faculties[num].toString());
                         for (int g = 0; g < faculties[num].departmentsLength(); g++) {
                             System.out.println(g + ". " + faculties[num].departmentIndex(g));
@@ -519,6 +548,10 @@ public class Laboratory {
                         int numDep = DataInput.getInt("Введіть порядковий номер кафедри: ");
                         if (numDep >= 0 && numDep < faculties[num].departmentsLength()) {
                             Teacher[] listTeachers = faculties[num].departmentIndex(numDep).getTeachers();
+                            if (listTeachers.length==0){
+                                System.out.println("В цій кафедрі немає викладачів");
+                                break;
+                            }
                             System.out.println("Всі викладачі кафедри");
                             for (int q=0;q<listTeachers.length;q++){
                                 System.out.println(q+". "+listTeachers[q].toString());
@@ -532,7 +565,7 @@ public class Laboratory {
                                     System.out.println(i + ". " + faculties[i].toString());
                                 }
                                 int num1 = DataInput.getInt("Виберіть факультет: ");
-                                if (num1 >= 0 || num1 < faculties.length) {
+                                if (num1 >= 0 && num1 < faculties.length) {
                                     System.out.println("Всі кафедри факультету: " + faculties[num1].toString());
                                     for (int g = 0; g < faculties[num1].departmentsLength(); g++) {
                                         System.out.println(g + ". " + faculties[num1].departmentIndex(g));
@@ -555,7 +588,7 @@ public class Laboratory {
                         System.out.println(i + ". " + faculties[i].toString());
                     }
                     int num = DataInput.getInt("Виберіть факультет: ");
-                    if (num >= 0 || num < faculties.length) {
+                    if (num >= 0 && num < faculties.length) {
                         System.out.println("Всі кафедри факультету: " + faculties[num].toString());
                         for (int g = 0; g < faculties[num].departmentsLength(); g++) {
                             System.out.println(g + ". " + faculties[num].departmentIndex(g));
@@ -563,6 +596,10 @@ public class Laboratory {
                         int numDep = DataInput.getInt("Введіть порядковий номер кафедри: ");
                         if (numDep >= 0 && numDep < faculties[num].departmentsLength()) {
                             Teacher[] listTeachers = faculties[num].departmentIndex(numDep).getTeachers();
+                            if (listTeachers.length==0){
+                                System.out.println("В цій кафедрі немає викладачів");
+                                break;
+                            }
                             System.out.println("Всі викладачі кафедри");
                             for (int q=0;q<listTeachers.length;q++){
                                 System.out.println(q+". "+listTeachers[q].toString());
@@ -580,7 +617,7 @@ public class Laboratory {
                         System.out.println(i + ". " + faculties[i].toString());
                     }
                     int num = DataInput.getInt("Виберіть факультет: ");
-                    if (num >= 0 || num < faculties.length) {
+                    if (num >= 0 && num < faculties.length) {
                         System.out.println("Всі кафедри факультету: " + faculties[num].toString());
                         for (int g = 0; g < faculties[num].departmentsLength(); g++) {
                             System.out.println(g + ". " + faculties[num].departmentIndex(g));
@@ -589,6 +626,10 @@ public class Laboratory {
                         if (numDep >= 0 && numDep < faculties[num].departmentsLength()) {
                             Teacher[] listTeachers = faculties[num].departmentIndex(numDep).getTeachers();
                             System.out.println("Всі викладачі кафедри");
+                            if (listTeachers.length==0){
+                                System.out.println("В цій кафедрі немає викладачів");
+                                break;
+                            }
                             for (int q=0;q<listTeachers.length;q++){
                                 System.out.println(q+". "+listTeachers[q].toString());
                             }
