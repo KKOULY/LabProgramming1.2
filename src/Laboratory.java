@@ -62,6 +62,8 @@ public class Laboratory {
                 printAllStudentsOrTeachersSortByNamesInFaculty();
                 break;
             case 7:
+                System.out.println("Вивести всіх студентів кафедри впорядкованих за курсами");
+                printAllStudentsSortByCourseInFaculty();
                 break;
             case 8:
                 break;
@@ -73,6 +75,37 @@ public class Laboratory {
                 System.out.println("Некоректний номер");
         }
         DataInput.getString("Натисніть enter, щоб продовжити ");
+    }
+
+    private static void printAllStudentsSortByCourseInFaculty() {
+        Student[] students = Tools.getAllStudents(faculties);
+        System.out.println("Всі факультети: ");
+        for(int i = 0;i<faculties.length;i++){
+            System.out.println(i+". "+faculties[i].toString());
+        }
+        int num = DataInput.getInt("Виберіть факультет: ");
+        if(num >= 0 && num < faculties.length) {
+            System.out.println("Всі кафедри факультету: " + faculties[num].toString());
+            for (int i = 0; i < faculties[num].departmentsLength(); i++) {
+                System.out.println(i + ". " + faculties[num].departmentIndex(i).toString());
+            }
+            int numDep = DataInput.getInt("Виберіть кафедру: ");
+
+            if(numDep >= 0 && numDep < faculties[num].departmentsLength()){
+                Student[] studentsDep = new Student[0];
+                for(Student a : students){
+                    if (a.getPersonFaculty().toString().equals(faculties[num].toString()) &&
+                            a.getPersonDepartment().toString().equals(faculties[num].departmentIndex(numDep).toString())) {
+                        studentsDep = (Student[]) Tools.addPerson(studentsDep, a);
+                    }
+                }
+                if(studentsDep.length > 0){
+                    Tools.sortCourse(true, studentsDep);
+                    System.out.println(Tools.getStringPerson(studentsDep));
+                } else System.out.println("В ції кафедрі студентів немає");
+            }
+        }
+
     }
 
     private static void printAllStudentsOrTeachersSortByNamesInFaculty() {
