@@ -38,7 +38,21 @@ public class Tools {
         }
         return people;
     }
-
+    public static boolean checkNameFaculty(String name, Faculty[] faculties){
+        for ( Faculty i : faculties){
+            if (i.getNameOfFaculty().equals(name)) return false;
+        }
+        return true;
+    }
+    public static boolean checkNameDepartment(String name, Faculty[] faculties){
+        for ( Faculty i : faculties){
+            Department[] departments = i.getDepartments();
+            for (Department j : departments) {
+                if (j.getNameOfDepartment().equals(name)) return false;
+            }
+        }
+        return true;
+    }
     private static boolean alphabetCompare(Person[] people,int i, int y) {
         String s0 = people[i].getName();
         String s1 = people[y].getName();

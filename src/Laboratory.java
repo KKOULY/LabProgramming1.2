@@ -143,7 +143,7 @@ public class Laboratory {
         }
         int num = DataInput.getInt("Виберіть факультет: ");
 
-        if(num >= 0 || num < faculties.length){
+        if(num >= 0 && num < faculties.length){
             System.out.println("Всі кафедри факультету: " + faculties[num].toString());
             for(int g = 0;g<faculties[num].departmentsLength();g++){
                 System.out.println(g+". "+faculties[num].departmentIndex(g));
@@ -155,7 +155,9 @@ public class Laboratory {
             if(choice == 1){
                 System.out.println("Створення нової кафедри");
                 String s = Tools.checkTitle("Введіть назву нової кафедри:");
-                Tools.createDepartment(s,faculties,num);
+                if (Tools.checkNameDepartment(s,faculties)) {
+                    Tools.createDepartment(s, faculties, num);
+                } else System.out.println("Існує кафедра з такою назвою");
             }
             if(choice == 2){
                 int numDep = DataInput.getInt("Введіть порядковий номер кафедри: ");
@@ -165,7 +167,9 @@ public class Laboratory {
                     if(choice2 == 1) faculties[num].deleteDepartment(numDep);
                     else if(choice2 == 2){
                         String newName = Tools.checkTitle("Введіть нову назву: ");
-                        faculties[num].departmentIndex(numDep).setNameOfDepartment(newName);
+                        if (Tools.checkNameDepartment(newName,faculties)) {
+                            faculties[num].departmentIndex(numDep).setNameOfDepartment(newName);
+                        } else System.out.println("Існує кафедра з такою назвою");
                     }
                 }
             }
@@ -197,7 +201,10 @@ public class Laboratory {
     private static void firstMethod(){
         switch (DataInput.getInt("Введіть: 1 - створити факультет, 2 - видалити факультет, 3 - редагувати факультет: ")){
             case 1:
-                addFaculty(Tools.checkTitle("Назва факультету, який ви створюєте: "));
+                String name = Tools.checkTitle("Назва факультету, який ви створюєте: ");
+                if (Tools.checkNameFaculty(name,faculties)) {
+                    addFaculty(name);
+                } else System.out.println("Існує факультет з такою назвою");
                 break;
             case 2:
                 for (int i=0; i<faculties.length;i++) System.out.println(i+". "+faculties[i].toString());
@@ -207,7 +214,10 @@ public class Laboratory {
                 for (int i=0; i<faculties.length;i++) System.out.println(i+". "+faculties[i].toString());
                 int numberOfFaculty = DataInput.getInt("Номер факультету, який потрібно редагувати: ");
                 if (numberOfFaculty>=0 && numberOfFaculty<faculties.length){
-                    faculties[numberOfFaculty].setNameOfFaculty(Tools.checkTitle("Введіть нову назву факультету: "));
+                    String nameNew =Tools.checkTitle("Введіть нову назву факультету: ");
+                    if (Tools.checkNameFaculty(nameNew,faculties)) {
+                        faculties[numberOfFaculty].setNameOfFaculty(nameNew);
+                    } else System.out.println("Існує факультет з такою назвою");
                 } else System.out.println("Такого факультету не існує!");
                 break;
         }

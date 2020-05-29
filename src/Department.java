@@ -74,6 +74,10 @@ public class Department{
         this.nameOfDepartment = nameOfDepartment;
     }
 
+    public String getNameOfDepartment() {
+        return nameOfDepartment;
+    }
+
     public Student studentIndex(int n){
         if(n >=0 && n < students.length){
             return students[n];

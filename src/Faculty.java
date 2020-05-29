@@ -7,6 +7,10 @@ public class Faculty {
         this.nameOfFaculty = nameOfFaculty;
     }
 
+    public String getNameOfFaculty() {
+        return nameOfFaculty;
+    }
+
     public Department[] getDepartments() {
         return departments;
     }
