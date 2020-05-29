@@ -58,6 +58,8 @@ public class Laboratory {
                 printAllStudentsSortByCourse();
                 break;
             case 6:
+                System.out.println("Вивести всіх студентів/викладачів факультета впорядкованих за алфавітом");
+                printAllStudentsOrTeachersSortByNamesInFaculty();
                 break;
             case 7:
                 break;
@@ -71,6 +73,27 @@ public class Laboratory {
                 System.out.println("Некоректний номер");
         }
         DataInput.getString("Натисніть enter, щоб продовжити ");
+    }
+
+    private static void printAllStudentsOrTeachersSortByNamesInFaculty() {
+        Student[] students = Tools.getAllStudents(faculties);
+        System.out.println("Всі факультети: ");
+        for(int i = 0;i<faculties.length;i++){
+            System.out.println(i+". "+faculties[i].toString());
+        }
+        int num = DataInput.getInt("Виберіть факультет: ");
+        if(num >= 0 && num < faculties.length) {
+            Student[] studentsFac = new Student[0];
+            for (Student a : students) {
+                if (a.getPersonFaculty().toString().equals(faculties[num].toString())){
+                    studentsFac = (Student[]) Tools.addPerson(studentsFac,a);
+                }
+            }
+            if(studentsFac.length > 0) {
+                Tools.sortNames(true, studentsFac);
+                System.out.println(Tools.getStringPerson(studentsFac));
+            }else System.out.println("В цьому факультеті немає студентів");
+        }
     }
 
     private static void printAllStudentsSortByCourse() {

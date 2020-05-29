@@ -47,7 +47,7 @@ public class Person {
     }
 
     public String toString(){
-        return "Person: "+name+" "+lastName
-                +", Faculty: "+personFaculty+", Department: "+personDepartment;
+        return "Людина: "+name+" "+lastName
+                +", Факультет: "+personFaculty+", Кафедра: "+personDepartment;
     }
 }

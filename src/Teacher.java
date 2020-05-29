@@ -7,7 +7,7 @@ public class Teacher extends Person{
     }
 
     public String toString(){
-        return "Teacher: "+getName()+" "+getLastName()
-                +", Faculty: "+ getPersonFaculty()+", Department: "+getPersonDepartment();
+        return "Викладач: "+getName()+" "+getLastName()
+                +", Факультет: "+ getPersonFaculty()+", Кафедра: "+getPersonDepartment();
     }
 }

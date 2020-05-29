@@ -33,8 +33,8 @@ public class Student extends Person{
     }
 
     public String toString(){
-        return "Student: "+getName()+" "+getLastName()
-                +", Faculty: "+ getPersonFaculty()+", Department: "+getPersonDepartment()
-                +", Course: "+course+", Group: "+group;
+        return "Студент: "+getName()+" "+getLastName()
+                +", Факультет: "+ getPersonFaculty()+", Кафедра: "+getPersonDepartment()
+                +", Курс: "+course+", Група: "+group;
     }
 }
