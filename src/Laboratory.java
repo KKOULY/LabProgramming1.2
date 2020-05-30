@@ -110,7 +110,7 @@ public class Laboratory {
                     System.out.println(Tools.getStringPerson(studentsDep));
                 } else System.out.println("В ції кафедрі студентів немає");
             }
-        }
+        } else System.out.println("Ви ввели неправильні дані");
 
     }
 
@@ -132,7 +132,7 @@ public class Laboratory {
                 Tools.sortNames(true, studentsFac);
                 System.out.println(Tools.getStringPerson(studentsFac));
             }else System.out.println("В цьому факультеті немає студентів");
-        }
+        } else System.out.println("Ви ввели неправильні дані");
     }
 
     private static void printAllStudentsSortByCourse() {
@@ -164,8 +164,7 @@ public class Laboratory {
                 if (Tools.checkNameDepartment(s,faculties)) {
                     Tools.createDepartment(s, faculties, num);
                 } else System.out.println("Існує кафедра з такою назвою");
-            }
-            if(choice == 2){
+            }else if(choice == 2){
                 int numDep = DataInput.getInt("Введіть порядковий номер кафедри: ");
                 if(numDep >=0 && numDep < faculties[num].departmentsLength()){
                     System.out.println("Кафедра: "+ faculties[num].departmentIndex(numDep).toString()+" (1-Видалити/2-Редагувати)");
@@ -178,10 +177,10 @@ public class Laboratory {
                         } else System.out.println("Існує кафедра з такою назвою");
                     }
                 }
-            }
+            } else System.out.println("Ви ввели неправильні дані");
             Tools.savePeople(faculties);
             Tools.saveDepartments(faculties);
-        }
+        } else System.out.println("Ви ввели неправильні дані");
     }
 
     public static void addFaculty(String nameOfFaculty){
@@ -236,12 +235,10 @@ public class Laboratory {
                 if (whatDo==1){
                     Person[] findStudents = Tools.findPersonName(Tools.getAllStudents(faculties), Tools.checkName("Ім'я студента:"));
                     for (Person i : findStudents) System.out.println(i.toString());
-                }
-                if (whatDo == 2) {
+                }else if (whatDo == 2) {
                     Person[] findStudents = Tools.findPersonLastName(Tools.getAllStudents(faculties), Tools.checkName("Прізвище студента:"));
                     for (Person i : findStudents) System.out.println(i.toString());
-                }
-                if (whatDo == 3){
+                }else if (whatDo == 3){
                     Student[] listOfStudents = Tools.getAllStudents(faculties);
                     int course = DataInput.getInt("Номер курсу: ");
                     if (course>=1 && course<=6) {
@@ -249,8 +246,7 @@ public class Laboratory {
                             if (i.getCourse() == course) System.out.println(i.toString());
                         }
                     } else System.out.println("Не існує такого курсу");
-                }
-                if (whatDo==4){
+                }else if (whatDo==4){
                     Student[] listOfStudents = Tools.getAllStudents(faculties);
                     int group = DataInput.getInt("Номер групи: ");
                     if (group>=1 && group<=2) {
@@ -258,18 +254,17 @@ public class Laboratory {
                             if (i.getGroup() == group) System.out.println(i.toString());
                         }
                     } else System.out.println("Не існує такої групи");
-                }
+                } else System.out.println("Ви ввели неправильні дані");
                 break;
             case 2:
                 int whatToDo = DataInput.getInt("Введіть: 1 - шукати за ім'ям, 2 - за прізвищем: ");
                 if (whatToDo == 1) {
                     Person[] findTeachers = Tools.findPersonName(Tools.getAllTeachers(faculties), Tools.checkName("Ім'я викладача:"));
                     for (Person i : findTeachers) System.out.println(i.toString());
-                }
-                if (whatToDo == 2) {
+                }else if (whatToDo == 2) {
                     Person[] findTeachers =  Tools.findPersonLastName(Tools.getAllTeachers(faculties), Tools.checkName("Прізвище викладача:"));
                     for (Person i : findTeachers) System.out.println(i.toString());
-                }
+                } else System.out.println("Ви ввели неправильні дані");
                 break;
             default: System.out.println("Ви ввели невірні дані");
         }
@@ -304,10 +299,9 @@ public class Laboratory {
                             newStudent.setCourse(course);
                             newStudent.setGroup(group);
                             faculties[num].departmentIndex(numDep).addStudent(newStudent);
-                        }
-                    }
-                }
-                if (whatDo==2) {
+                        }else System.out.println("Ви ввели неправильні дані");
+                    } else System.out.println("Ви ввели неправильні дані");
+                }else if (whatDo==2) {
                     System.out.println("Всі факультети: ");
                     for (int i = 0; i < faculties.length; i++) {
                         System.out.println(i + ". " + faculties[i].toString());
@@ -333,10 +327,9 @@ public class Laboratory {
                             if (deleteStudent>=0 && deleteStudent<faculties[num].departmentIndex(numDep).getStudents().length) {
                                 faculties[num].departmentIndex(numDep).deleteStudent(deleteStudent);
                             }
-                        }
-                    }
-                }
-                if (whatDo==3){
+                        }else System.out.println("Ви ввели неправильні дані");
+                    }else System.out.println("Ви ввели неправильні дані");
+                }else if (whatDo==3){
                     System.out.println("Всі факультети: ");
                     for (int i = 0; i < faculties.length; i++) {
                         System.out.println(i + ". " + faculties[i].toString());
@@ -378,13 +371,12 @@ public class Laboratory {
                                         faculties[num].departmentIndex(num).studentIndex(changeStudent).setPersonFaculty(faculties[num1]);
                                         faculties[num].departmentIndex(num).studentIndex(changeStudent).setPersonDepartment(faculties[num1].departmentIndex(numDep1));
                                         faculties[num].departmentIndex(numDep).deleteStudent(changeStudent);
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-                if (whatDo==4){
+                                    }else System.out.println("Ви ввели неправильні дані");
+                                }else System.out.println("Ви ввели неправильні дані");
+                            }else System.out.println("Ви ввели неправильні дані");
+                        }else System.out.println("Ви ввели неправильні дані");
+                    }else System.out.println("Ви ввели неправильні дані");
+                }else if (whatDo==4){
                     System.out.println("Всі факультети: ");
                     for (int i = 0; i < faculties.length; i++) {
                         System.out.println(i + ". " + faculties[i].toString());
@@ -409,11 +401,10 @@ public class Laboratory {
                             int changeStudent =DataInput.getInt("Номер студента: ");;
                             if (changeStudent>=0 && changeStudent<faculties[num].departmentIndex(numDep).getStudents().length) {
                                 faculties[num].departmentIndex(numDep).studentIndex(changeStudent).setName(Tools.checkName("Нове ім'я: "));
-                            }
-                        }
-                    }
-                }
-                if (whatDo==5){
+                            }else System.out.println("Ви ввели неправильні дані");
+                        }else System.out.println("Ви ввели неправильні дані");
+                    }else System.out.println("Ви ввели неправильні дані");
+                }else if (whatDo==5){
                     System.out.println("Всі факультети: ");
                     for (int i = 0; i < faculties.length; i++) {
                         System.out.println(i + ". " + faculties[i].toString());
@@ -438,11 +429,10 @@ public class Laboratory {
                             int changeStudent =DataInput.getInt("Номер студента: ");;
                             if (changeStudent>=0 && changeStudent<faculties[num].departmentIndex(numDep).getStudents().length) {
                                 faculties[num].departmentIndex(numDep).studentIndex(changeStudent).setLastName(Tools.checkName("Нове прізвище: "));
-                            }
-                        }
-                    }
-                }
-                if (whatDo==6){
+                            }else System.out.println("Ви ввели неправильні дані");
+                        }else System.out.println("Ви ввели неправильні дані");
+                    }else System.out.println("Ви ввели неправильні дані");
+                }else if (whatDo==6){
                     System.out.println("Всі факультети: ");
                     for (int i = 0; i < faculties.length; i++) {
                         System.out.println(i + ". " + faculties[i].toString());
@@ -467,11 +457,10 @@ public class Laboratory {
                             int changeStudent =DataInput.getInt("Номер студента: ");;
                             if (changeStudent>=0 && changeStudent<faculties[num].departmentIndex(numDep).getStudents().length) {
                                 faculties[num].departmentIndex(numDep).studentIndex(changeStudent).setCourse(DataInput.getInt("Введіть новий курс: "));
-                            }
-                        }
-                    }
-                }
-                if (whatDo==7){
+                            }else System.out.println("Ви ввели неправильні дані");
+                        }else System.out.println("Ви ввели неправильні дані");
+                    }else System.out.println("Ви ввели неправильні дані");
+                }else if (whatDo==7){
                     System.out.println("Всі факультети: ");
                     for (int i = 0; i < faculties.length; i++) {
                         System.out.println(i + ". " + faculties[i].toString());
@@ -496,10 +485,10 @@ public class Laboratory {
                             int changeStudent =DataInput.getInt("Номер студента: ");;
                             if (changeStudent>=0 && changeStudent<faculties[num].departmentIndex(numDep).getStudents().length) {
                                 faculties[num].departmentIndex(numDep).studentIndex(changeStudent).setGroup(DataInput.getInt("Введіть нову групу: "));
-                            }
-                        }
-                    }
-                }
+                            }else System.out.println("Ви ввели неправильні дані");
+                        }else System.out.println("Ви ввели неправильні дані");
+                    }else System.out.println("Ви ввели неправильні дані");
+                } else System.out.println("Ви ввели неправильні дані");
                 break;
             case 2:
                 int whatToDo = DataInput.getInt("Введіть: 1 - додати, 2 - видалити, 3 - змінити кафедру, 4 - змінити ім'я, 5 - призвище: ");
@@ -518,10 +507,9 @@ public class Laboratory {
                         if(numDep >=0 && numDep < faculties[num].departmentsLength()){
                             Teacher newTeacher = new Teacher(Tools.checkName("Введіть ім'я викладача: "),Tools.checkName("Введіть прізвище викладача: "),faculties[num],faculties[num].departmentIndex(numDep));
                             faculties[num].departmentIndex(numDep).addTeacher(newTeacher);
-                        }
-                    }
-                }
-                if (whatToDo==2) {
+                        }else System.out.println("Ви ввели неправильні дані");
+                    }else System.out.println("Ви ввели неправильні дані");
+                }else if (whatToDo==2) {
                     System.out.println("Всі факультети: ");
                     for (int i = 0; i < faculties.length; i++) {
                         System.out.println(i + ". " + faculties[i].toString());
@@ -546,11 +534,10 @@ public class Laboratory {
                             int deleteTeacher =DataInput.getInt("Номер викладача, якого потрібно видалити: ");;
                             if (deleteTeacher>=0 && deleteTeacher<faculties[num].departmentIndex(numDep).getTeachers().length) {
                                 faculties[num].departmentIndex(numDep).deleteTeacher(deleteTeacher);
-                            }
-                        }
-                    }
-                }
-                if (whatToDo==3){
+                            }else System.out.println("Ви ввели неправильні дані");
+                        }else System.out.println("Ви ввели неправильні дані");
+                    }else System.out.println("Ви ввели неправильні дані");
+                }else if (whatToDo==3){
                     System.out.println("Всі факультети: ");
                     for (int i = 0; i < faculties.length; i++) {
                         System.out.println(i + ". " + faculties[i].toString());
@@ -592,13 +579,12 @@ public class Laboratory {
                                         faculties[num].departmentIndex(num).teacherIndex(changeTeacher).setPersonFaculty(faculties[num1]);
                                         faculties[num].departmentIndex(num).teacherIndex(changeTeacher).setPersonDepartment(faculties[num1].departmentIndex(numDep1));
                                         faculties[num].departmentIndex(numDep).deleteTeacher(changeTeacher);
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-                if (whatToDo==4){
+                                    }else System.out.println("Ви ввели неправильні дані");
+                                }else System.out.println("Ви ввели неправильні дані");
+                            }else System.out.println("Ви ввели неправильні дані");
+                        }else System.out.println("Ви ввели неправильні дані");
+                    }else System.out.println("Ви ввели неправильні дані");
+                }else if (whatToDo==4){
                     System.out.println("Всі факультети: ");
                     for (int i = 0; i < faculties.length; i++) {
                         System.out.println(i + ". " + faculties[i].toString());
@@ -623,9 +609,9 @@ public class Laboratory {
                             int changeTeacher =DataInput.getInt("Номер викладача: ");;
                             if (changeTeacher>=0 && changeTeacher<faculties[num].departmentIndex(numDep).getTeachers().length) {
                                 faculties[num].departmentIndex(numDep).teacherIndex(changeTeacher).setName(Tools.checkName("Нове ім'я викладача: "));
-                            }
-                        }
-                    }
+                            }else System.out.println("Ви ввели неправильні дані");
+                        }else System.out.println("Ви ввели неправильні дані");
+                    }else System.out.println("Ви ввели неправильні дані");
                 }
                 if (whatToDo==5){
                     System.out.println("Всі факультети: ");
@@ -652,9 +638,9 @@ public class Laboratory {
                             int changeTeacher =DataInput.getInt("Номер викладача: ");;
                             if (changeTeacher>=0 && changeTeacher<faculties[num].departmentIndex(numDep).getTeachers().length) {
                                 faculties[num].departmentIndex(numDep).teacherIndex(changeTeacher).setLastName(Tools.checkName("Нове прізвище викладача: "));
-                            }
-                        }
-                    }
+                            }else System.out.println("Ви ввели неправильні дані");
+                        }else System.out.println("Ви ввели неправильні дані");
+                    }else System.out.println("Ви ввели неправильні дані");
                 }
                 break;
         }
@@ -680,16 +666,15 @@ public class Laboratory {
                         Tools.sortNames(true,students);
                         System.out.println(Tools.getStringPerson(students));
                     }
-                }
-                if (who == 2 ){
+                }else if (who == 2 ){
                     Teacher[] teachers = faculties[num].departmentIndex(numDep).getTeachers();
                     if (teachers.length>0){
                         Tools.sortNames(true,teachers);
                         System.out.println(Tools.getStringPerson(teachers));
                     }
-                }
-            }
-            }
+                }else System.out.println("Ви ввели неправильні дані");
+            }else System.out.println("Ви ввели неправильні дані");
+        }else System.out.println("Ви ввели неправильні дані");
     }
     private static void allDepartmentStudentsCourse(){
         System.out.println("Всі факультети: ");
@@ -717,10 +702,10 @@ public class Laboratory {
                         if (studentsCourse.length!=0){
                             System.out.println(Tools.getStringPerson(studentsCourse));
                         }
-                    }
+                    }else System.out.println("Ви ввели неправильні дані");
                 }
-            }
-            }
+            }else System.out.println("Ви ввели неправильні дані");
+        }else System.out.println("Ви ввели неправильні дані");
     }
     private static void allDepartmentStudentsCourseAlp(){
         System.out.println("Всі факультети: ");
@@ -749,9 +734,9 @@ public class Laboratory {
                             Tools.sortNames(true,studentsCourse);
                             System.out.println(Tools.getStringPerson(studentsCourse));
                         }
-                    }
+                    }else System.out.println("Ви ввели неправильні дані");
                 }
-            }
-        }
+            }else System.out.println("Ви ввели неправильні дані");
+        }else System.out.println("Ви ввели неправильні дані");
     }
 }
