@@ -3,6 +3,12 @@ import java.util.StringTokenizer;
 
 public class Tools {
 
+    /**
+     * Сортування студентів за курсом
+     * @param up сортувати за зростанням або за спаданням
+     * @param students масив студентів
+     * @return масив студентів
+     */
     public static Student[] sortCourse(boolean up, Student[] students) {
         if(students != null && students.length > 1){
             for(int x = 1; x < students.length;x++){
@@ -20,6 +26,12 @@ public class Tools {
         return students;
     }
 
+    /**
+     * Сортування людей за ім^ям та прізвищем
+     * @param up сортувати від А чи до А
+     * @param people масив людей
+     * @return масив людей
+     */
     public static Person[] sortNames(boolean up, Person[] people) {
         if(people != null && people.length > 1){
             for(int x = 1; x < people.length;x++){
@@ -36,12 +48,26 @@ public class Tools {
         }
         return people;
     }
+
+    /**
+     * Перевіряє чи є вже факультет з такою назвою чи ні
+     * @param name назва
+     * @param faculties масив факультетів
+     * @return якщо є то false, інакше true
+     */
     public static boolean checkNameFaculty(String name, Faculty[] faculties){
         for ( Faculty i : faculties){
             if (i.getNameOfFaculty().equals(name)) return false;
         }
         return true;
     }
+
+    /**
+     * Перевіряє чи є вже кафедра з такою назвою чи ні
+     * @param name назва
+     * @param faculties масив факультетів
+     * @return якщо є то false, інакше true
+     */
     public static boolean checkNameDepartment(String name, Faculty[] faculties){
         for ( Faculty i : faculties){
             Department[] departments = i.getDepartments();
@@ -51,6 +77,14 @@ public class Tools {
         }
         return true;
     }
+
+    /**
+     * Порівнює два імені в масиві за алфавітним порядком
+     * @param people масив людей
+     * @param i індекс 1-ї людини
+     * @param y індекс 2-ї людини
+     * @return true якщо за алфавітом, інакше false
+     */
     private static boolean alphabetCompare(Person[] people,int i, int y) {
         String s0 = people[i].getName()+people[i].getLastName();
         String s1 = people[y].getName()+people[y].getLastName();
@@ -69,14 +103,26 @@ public class Tools {
         return flag;
     }
 
+    /**
+     * Міняє місями двох людей у масиві
+     * @param people масив людей
+     * @param i індекс 1-ї людини
+     * @param y індекс 2-ї людини
+     */
     private static void swap(Person[] people, int i, int y) {
         Person temp = people[i];
         people[i] = people[y];
         people[y] = temp;
     }
 
+    /**
+     * Впорядкований масив укр і англ літер
+     */
     private static int[] value = new int[1169];
 
+    /**
+     * Ініціалізація літер
+     */
     public static void init(){
         value[1040]=1;
         value[1041]=2;
@@ -139,6 +185,11 @@ public class Tools {
         value[90]=59;
     }
 
+    /**
+     *
+     * @param people
+     * @return Повертає String всіх людей
+     */
     public static String getStringPerson(Person[] people){
         String str = "";
         if(people != null){
@@ -149,6 +200,11 @@ public class Tools {
         return str;
     }
 
+    /**
+     * Повертає масив всіх студентів в масиві факультетів
+     * @param faculties масив факультетів
+     * @return масив студентів
+     */
     public static Student[] getAllStudents(Faculty[] faculties){
         Student[] studentsTemp = new Student[0];
         for(int iFac = 0; iFac< faculties.length; iFac++){
@@ -164,6 +220,11 @@ public class Tools {
         return studentsTemp;
     }
 
+    /**
+     * Повертає масив всіх викладачів в масиві факультетів
+     * @param faculties масив факультетів
+     * @return масив викладачів
+     */
     public static Teacher[] getAllTeachers(Faculty[] faculties){
         Teacher[] teachersTemp = new Teacher[0];
         for(int iFac = 0; iFac< faculties.length; iFac++){
@@ -179,6 +240,12 @@ public class Tools {
         return teachersTemp;
     }
 
+    /**
+     * Додає студента до масиву і повертає цей масив
+     * @param people масив студентів
+     * @param person студент
+     * @return новий масив студентів
+     */
     public static Person[] addPerson(Student[] people, Student person){
         Student[] peopleTemp = new Student[people.length+1];
         System.arraycopy(people,0,peopleTemp,0,people.length);
@@ -187,6 +254,12 @@ public class Tools {
         return people;
     }
 
+    /**
+     * Додає викладача до масиву і повертає цей масив
+     * @param people масив викладачів
+     * @param person викладач
+     * @return новий масив викладачів
+     */
     public static Person[] addPerson(Teacher[] people, Teacher person){
         Teacher[] peopleTemp = new Teacher[people.length+1];
         System.arraycopy(people,0,peopleTemp,0,people.length);
@@ -195,6 +268,12 @@ public class Tools {
         return people;
     }
 
+    /**
+     * Додає людину до масиву і повертає цей масив
+     * @param people масив людей
+     * @param person людина
+     * @return новий масив людей
+     */
     public static Person[] addPerson(Person[] people, Person person){
         Person[] peopleTemp = new Person[people.length+1];
         System.arraycopy(people,0,peopleTemp,0,people.length);
@@ -203,6 +282,12 @@ public class Tools {
         return people;
     }
 
+    /**
+     * Додає факультет до масиву факультетів і повертає новий масив
+     * @param faculties масив факультет
+     * @param faculty факультет
+     * @return новий масив факультет
+     */
     public static Faculty[] addFaculty(Faculty[] faculties, Faculty faculty){
         Faculty[] facultiesTemporary = new Faculty[faculties.length+1];
         System.arraycopy(faculties,0,facultiesTemporary,0,faculties.length);
@@ -210,7 +295,11 @@ public class Tools {
         return facultiesTemporary;
     }
 
-    //перевіряє чи це слово(в стрічці тільки букви)
+    /**
+     * Перевіряє чи це слово(в стрічці тільки букви)
+     * @param word слово
+     * @return true, якщо це слово, інакше false
+     */
     public static boolean isWord(String word){
         for(int i =0; i<word.length(); i++) {
             if (!Character.isLetter(word.charAt(i))) {
@@ -219,7 +308,12 @@ public class Tools {
         }
         return true;
     }
-    //робить першу літеру великою, а всі наступні маленькими + не пропускає далі поки не введеш слово
+
+    /**
+     * Робить першу літеру великою, а всі наступні маленькими + не пропускає далі поки не введеш слово
+     * @param whatToWrite слово
+     * @return правильне слово
+     */
     public static String checkName(String whatToWrite) {
         String realName = "";
         while (true) {
@@ -247,6 +341,12 @@ public class Tools {
             return realName;
         }
     }
+
+    /**
+     * Перевіряє чи назва є допустимою як назва для кафедри або факультету
+     * @param wordList назва
+     * @return true, якщо дупистима, інакше false
+     */
     public static boolean isWordList(String wordList){
         if (wordList.charAt(0)==' ') return false;
         if (wordList.charAt(wordList.length()-1)==' ') return false;
@@ -261,6 +361,12 @@ public class Tools {
         }
         return true;
     }
+
+    /**
+     * Не пропускає далі поки користувач не введе правильне слово
+     * @param whatToWrite
+     * @return слово
+     */
     public static String checkTitle(String whatToWrite) {
         String realName = "";
         while (true) {
@@ -288,6 +394,13 @@ public class Tools {
             return realName;
         }
     }
+
+    /**
+     * Шукає людей за ім^ям
+     * @param people масив
+     * @param name
+     * @return масив людей
+     */
     public static Person[] findPersonName(Person[] people, String name){
         Person[] peopleList = {};
         for(int j = 0; j<people.length;j++) {
@@ -308,6 +421,12 @@ public class Tools {
         return peopleList;
     }
 
+    /**
+     * Шукає людей за прізвищем
+     * @param people масив людей
+     * @param name прізвище
+     * @return масив людей
+     */
     public static Person[] findPersonLastName(Person[] people, String name){
         Person[] peopleList = {};
         for(int j = 0; j<people.length;j++) {
@@ -328,6 +447,12 @@ public class Tools {
         return peopleList;
     }
 
+    /**
+     * Знаходить студентів за курсом
+     * @param course курс
+     * @param students масив студнтів
+     * @return масив студентів
+     */
     public static Student[] findStudentCourse(int course, Student[] students){
         if (course>6) course=6;
         if (course<1) course=1;
@@ -337,6 +462,13 @@ public class Tools {
         }
         return studentList;
     }
+
+    /**
+     * Знаходить студентів за групою
+     * @param group група
+     * @param students масив студнтів
+     * @return масив студентів
+     */
     public static Student[] findStudentGroup(int group, Student[] students){
         if (group>2) group=2;
         if (group<1) group=1;
@@ -347,6 +479,10 @@ public class Tools {
         return studentList;
     }
 
+    /**
+     * Зчитує дані про кафедри з файлу
+     * @param ourFaculties масив факультетів
+     */
     public static void readDepartments(Faculty[] ourFaculties){
         try {
             BufferedReader rf = new BufferedReader(new FileReader("departments.txt"));
@@ -366,6 +502,10 @@ public class Tools {
         }
     }
 
+    /**
+     * Зчитує дані про факультетм з файлу
+     * @return масив факультетів
+     */
     public static Faculty[] readFaculty(){
         Faculty[] faculties = {};
         try {
@@ -385,6 +525,10 @@ public class Tools {
         return faculties;
     }
 
+    /**
+     * Зчитує дані про людей з файлу
+     * @param faculties масив факультетів
+     */
     public static void readPeople(Faculty[] faculties){
         try {
             BufferedReader rf = new BufferedReader(new FileReader("people.txt"));
@@ -413,6 +557,14 @@ public class Tools {
         }
     }
 
+    /**
+     * Створює викладача
+     * @param faculties масив факультетів
+     * @param name ім^я
+     * @param lastName прізвище
+     * @param nameOfFaculty назва факультету
+     * @param nameOfDepartment назва кафедри
+     */
     private static void createTeacher(Faculty[] faculties, String name,
                                       String lastName, String nameOfFaculty, String nameOfDepartment) {
         if(name == null) name = "None";
@@ -431,6 +583,16 @@ public class Tools {
         }
     }
 
+    /**
+     * Створює студента
+     * @param faculties масив факультетів
+     * @param name ім^я
+     * @param lastName прізвище
+     * @param nameOfFaculty назва факультету
+     * @param nameOfDepartment назва кафедри
+     * @param course курс
+     * @param group група
+     */
     private static void createStudent(Faculty[] faculties, String name,
                                       String lastName, String nameOfFaculty, String nameOfDepartment, int course, int group) {
         if(name == null) name = "None";
@@ -449,6 +611,10 @@ public class Tools {
         }
     }
 
+    /**
+     * Зберігає дані про факультети
+     * @param faculties масив факультетів
+     */
     public static void saveFaculties(Faculty[] faculties){
         try {
             PrintWriter wr = new PrintWriter(new FileWriter("faculties.txt"));
@@ -463,6 +629,10 @@ public class Tools {
         }
     }
 
+    /**
+     * Зберігає дані про кафедри
+     * @param faculties масив факультетів
+     */
     public static void saveDepartments(Faculty[] faculties){
         try {
             PrintWriter wr = new PrintWriter(new FileWriter("departments.txt"));
@@ -479,6 +649,11 @@ public class Tools {
             e.printStackTrace();
         }
     }
+
+    /**
+     * Зберігає дані про людей
+     * @param faculties масив факультетів
+     */
     public static void savePeople(Faculty[] faculties){
         Student[] students = Tools.getAllStudents(faculties);
         Teacher[] teachers = Tools.getAllTeachers(faculties);
@@ -498,6 +673,12 @@ public class Tools {
         }
     }
 
+    /**
+     * Створює кафедру
+     * @param nameOfDepartment назва
+     * @param faculties масив факультетів
+     * @param numberOfFaculty порядковий номер факультету
+     */
     public static void createDepartment(String nameOfDepartment, Faculty[] faculties, int numberOfFaculty){
         if (numberOfFaculty>=0 && numberOfFaculty<faculties.length) {
             faculties[numberOfFaculty].addDepartment(nameOfDepartment);
