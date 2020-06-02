@@ -187,7 +187,7 @@ public class Tools {
 
     /**
      *
-     * @param people
+     * @param people масив людей
      * @return Повертає String всіх людей
      */
     public static String getStringPerson(Person[] people){
@@ -364,7 +364,7 @@ public class Tools {
 
     /**
      * Не пропускає далі поки користувач не введе правильне слово
-     * @param whatToWrite
+     * @param whatToWrite слово
      * @return слово
      */
     public static String checkTitle(String whatToWrite) {
@@ -398,7 +398,7 @@ public class Tools {
     /**
      * Шукає людей за ім^ям
      * @param people масив
-     * @param name
+     * @param name ім^я
      * @return масив людей
      */
     public static Person[] findPersonName(Person[] people, String name){

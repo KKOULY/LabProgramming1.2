@@ -1,5 +1,12 @@
 public class Laboratory {
     /**
+     * Програма, що формує список студентів та викладачів університету НаУКМА та працює з ним.
+     * @author Соловйов Дмитро
+     * @author Сердюк Федір
+     */
+
+
+    /**
      * Масив факультетів
      */
     private static Faculty[] faculties = new Faculty[0];

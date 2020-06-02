@@ -147,7 +147,7 @@ public class Department{
 
     /**
      * Повертає довжину масиву студентів
-     * @return
+     * @return довжина масиву
      */
     public int studentsLength(){
         return students.length;
@@ -166,7 +166,7 @@ public class Department{
 
     /**
      * Повертає довжину масиву викладачів
-     * @return
+     * @return довжина масиву
      */
     public int teachersLength(){
         return teachers.length;

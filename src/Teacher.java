@@ -12,7 +12,7 @@ public class Teacher extends Person{
 
     /**
      * Виводить всю інформацію про викладача
-     * @return
+     * @return String
      */
     public String toString(){
         return "Викладач: "+getName()+" "+getLastName()

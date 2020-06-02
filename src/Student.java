@@ -74,7 +74,7 @@ public class Student extends Person{
 
     /**
      * Виводить всю інформацію про студента
-     * @return
+     * @return String
      */
     public String toString(){
         return "Студент: "+getName()+" "+getLastName()
