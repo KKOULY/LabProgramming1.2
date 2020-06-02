@@ -1,7 +1,13 @@
 public class Laboratory {
+    /**
+     * Масив факультетів
+     */
     private static Faculty[] faculties = new Faculty[0];
 
-
+    /**
+     * Метод main
+     * @param args -
+     */
     public static void main(String[] args) {
         Tools.init();
         faculties = Tools.readFaculty();
@@ -10,6 +16,9 @@ public class Laboratory {
         startMenu();
     }
 
+    /**
+     * Стартове меню
+     */
     private static void startMenu() {
         int choice;
         do{
@@ -31,6 +40,10 @@ public class Laboratory {
         System.exit(1);
     }
 
+    /**
+     * Запуск методу в залежності від вибору користувача
+     * @param choice номер методу
+     */
     private static void UserChoice(int choice) {
         System.out.println();
         switch (choice){
@@ -83,6 +96,9 @@ public class Laboratory {
         DataInput.getString("Натисніть enter, щоб продовжити ");
     }
 
+    /**
+     * Роздруковує всіх студентів відсортованих за курсом у вибраному факультеті
+     */
     private static void printAllStudentsSortByCourseInFaculty() {
         Student[] students = Tools.getAllStudents(faculties);
         System.out.println("Всі факультети: ");
@@ -114,6 +130,9 @@ public class Laboratory {
 
     }
 
+    /**
+     * Роздруковує всіх студентів або вчителів відсортованиз за іменами у вибраному факультеті
+     */
     private static void printAllStudentsOrTeachersSortByNamesInFaculty() {
         Student[] students = Tools.getAllStudents(faculties);
         System.out.println("Всі факультети: ");
@@ -135,6 +154,9 @@ public class Laboratory {
         } else System.out.println("Ви ввели неправильні дані");
     }
 
+    /**
+     * Роздруковує всіх студентів відсортованих за курсом
+     */
     private static void printAllStudentsSortByCourse() {
         System.out.println();
         Student[] students = Tools.getAllStudents(faculties);
@@ -142,6 +164,9 @@ public class Laboratory {
         System.out.println(Tools.getStringPerson(students));
     }
 
+    /**
+     * Створює/Видаляє/Змінює кафедру
+     */
     private static void CreateDeleteChangeDepartments() {
         System.out.println("Всі факультети: ");
         for(int i = 0;i<faculties.length;i++){
@@ -183,6 +208,10 @@ public class Laboratory {
         } else System.out.println("Ви ввели неправильні дані");
     }
 
+    /**
+     * Створює і додає факультет
+     * @param nameOfFaculty назва факультету
+     */
     public static void addFaculty(String nameOfFaculty){
         Faculty[] facultiesTemporary = new Faculty[faculties.length+1];
         System.arraycopy(faculties,0,facultiesTemporary,0,faculties.length);
@@ -190,6 +219,10 @@ public class Laboratory {
         faculties = facultiesTemporary;
     }
 
+    /**
+     * Видаляє факультет
+     * @param numOfFaculty назва факультет
+     */
     public static void deleteFaculty(int numOfFaculty){
         if (numOfFaculty<=faculties.length && numOfFaculty>=0) {
             Faculty[] facultiesTemporary = new Faculty[faculties.length - 1];
@@ -203,6 +236,10 @@ public class Laboratory {
             faculties = facultiesTemporary;
         }
     }
+
+    /**
+     * Створює/Видаляє/Змінює факультет
+     */
     private static void firstMethod(){
         switch (DataInput.getInt("Введіть: 1 - створити факультет, 2 - видалити факультет, 3 - редагувати факультет: ")){
             case 1:
@@ -228,6 +265,10 @@ public class Laboratory {
         }
         Tools.saveFaculties(faculties);
     }
+
+    /**
+     * Знаходить студента або викладача
+     */
     private static void findStudentOrTeacher(){
         switch (DataInput.getInt("Введіть: 1 - шукати студента, 2 - шукати викладача: ")){
             case 1:
@@ -646,6 +687,10 @@ public class Laboratory {
         }
         Tools.savePeople(faculties);
     }
+
+    /**
+     * Роздруковує всіх студентів або вчителів в кафедрі
+     */
     private static void printAllStudentsOrTeachersOnDepartmentAlp(){
         System.out.println("Всі факультети: ");
         for(int i = 0;i<faculties.length;i++){
@@ -676,6 +721,10 @@ public class Laboratory {
             }else System.out.println("Ви ввели неправильні дані");
         }else System.out.println("Ви ввели неправильні дані");
     }
+
+    /**
+     * Роздруковує всіх студентів кафедри відсортованих за курсом
+     */
     private static void allDepartmentStudentsCourse(){
         System.out.println("Всі факультети: ");
         for(int i = 0;i<faculties.length;i++){
@@ -707,6 +756,10 @@ public class Laboratory {
             }else System.out.println("Ви ввели неправильні дані");
         }else System.out.println("Ви ввели неправильні дані");
     }
+
+    /**
+     * Роздруковує всіх студентів кафедри відсортованих за алфавітом
+     */
     private static void allDepartmentStudentsCourseAlp(){
         System.out.println("Всі факультети: ");
         for(int i = 0;i<faculties.length;i++){
