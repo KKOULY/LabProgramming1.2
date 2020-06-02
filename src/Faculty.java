@@ -1,8 +1,7 @@
 public class Faculty {
     private String nameOfFaculty;
     private Department[] departments = new Department[0];
-    public Faculty(){
-    }
+
     public Faculty(String nameOfFaculty){
         this.nameOfFaculty = nameOfFaculty;
     }

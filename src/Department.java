@@ -3,10 +3,6 @@ public class Department{
     private Student[] students = new Student[0];
     private Teacher[] teachers = new Teacher[0];
 
-    public Department(){
-
-    }
-
     public Student[] getStudents() {
         return students;
     }
