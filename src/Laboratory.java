@@ -1,5 +1,12 @@
 public class Laboratory {
     /**
+     * Програма, що формує список студентів та викладачів університету НаУКМА та працює з ним.
+     * @author Соловйов Дмитро
+     * @author Сердюк Федір
+     */
+
+
+    /**
      * Масив факультетів
      */
     private static Faculty[] faculties = new Faculty[0];
@@ -135,22 +142,38 @@ public class Laboratory {
      */
     private static void printAllStudentsOrTeachersSortByNamesInFaculty() {
         Student[] students = Tools.getAllStudents(faculties);
+        Teacher[] teachers = Tools.getAllTeachers(faculties);
         System.out.println("Всі факультети: ");
         for(int i = 0;i<faculties.length;i++){
             System.out.println(i+". "+faculties[i].toString());
         }
         int num = DataInput.getInt("Виберіть факультет: ");
         if(num >= 0 && num < faculties.length) {
-            Student[] studentsFac = new Student[0];
-            for (Student a : students) {
-                if (a.getPersonFaculty().toString().equals(faculties[num].toString())){
-                    studentsFac = (Student[]) Tools.addPerson(studentsFac,a);
+            System.out.println("Вивести студентів - 1\nВивести викладачів - 2");
+            int ch = DataInput.getInt("Введіть номер: ");
+            if(ch == 1) {
+                Student[] studentsFac = new Student[0];
+                for (Student a : students) {
+                    if (a.getPersonFaculty().toString().equals(faculties[num].toString())) {
+                        studentsFac = (Student[]) Tools.addPerson(studentsFac, a);
+                    }
                 }
-            }
-            if(studentsFac.length > 0) {
-                Tools.sortNames(true, studentsFac);
-                System.out.println(Tools.getStringPerson(studentsFac));
-            }else System.out.println("В цьому факультеті немає студентів");
+                if (studentsFac.length > 0) {
+                    Tools.sortNames(true, studentsFac);
+                    System.out.println(Tools.getStringPerson(studentsFac));
+                } else System.out.println("В цьому факультеті немає студентів");
+            } else if(ch == 2){
+                Teacher[] teachersFac = new Teacher[0];
+                for (Teacher a : teachers) {
+                    if (a.getPersonFaculty().toString().equals(faculties[num].toString())) {
+                        teachersFac = (Teacher[]) Tools.addPerson(teachersFac, a);
+                    }
+                }
+                if (teachersFac.length > 0) {
+                    Tools.sortNames(true, teachersFac);
+                    System.out.println(Tools.getStringPerson(teachersFac));
+                } else System.out.println("В цьому факультеті немає викладачів");
+            } else System.out.println("Ви ввели неправильні дані");
         } else System.out.println("Ви ввели неправильні дані");
     }
 

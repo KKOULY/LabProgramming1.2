@@ -38,7 +38,7 @@ public class Person {
 
     /**
      * Повертає Ім^я
-     * @return
+     * @return Ім^я
      */
     public String getName() {
         return name;
@@ -46,7 +46,7 @@ public class Person {
 
     /**
      * Змінює Ім^я
-     * @param name
+     * @param name Ім^я
      */
     public void setName(String name) {
         this.name = name;
@@ -54,7 +54,7 @@ public class Person {
 
     /**
      * Повертає прізвище
-     * @return
+     * @return прізвище
      */
     public String getLastName() {
         return lastName;
@@ -62,7 +62,7 @@ public class Person {
 
     /**
      * Змінює прізвище
-     * @param lastName
+     * @param lastName прізвище
      */
     public void setLastName(String lastName) {
         this.lastName = lastName;
@@ -70,7 +70,7 @@ public class Person {
 
     /**
      * Повертає факульет
-     * @return
+     * @return факультет
      */
     public Faculty getPersonFaculty() {
         return personFaculty;
@@ -78,7 +78,7 @@ public class Person {
 
     /**
      * Змінює факультет
-     * @param personFaculty
+     * @param personFaculty факультет
      */
     public void setPersonFaculty(Faculty personFaculty) {
         this.personFaculty = personFaculty;
@@ -94,7 +94,7 @@ public class Person {
 
     /**
      * Змінює кафедру
-     * @param personDepartment
+     * @param personDepartment кафедр
      */
     public void setPersonDepartment(Department personDepartment) {
         this.personDepartment = personDepartment;
@@ -102,7 +102,7 @@ public class Person {
 
     /**
      * Повертає String з всією інформацією про людину
-     * @return
+     * @return String
      */
     public String toString(){
         return "Людина: "+name+" "+lastName

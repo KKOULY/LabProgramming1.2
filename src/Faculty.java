@@ -27,7 +27,7 @@ public class Faculty {
 
     /**
      * Повертає масив кафедр
-     * @return
+     * @return масив кафедр
      */
     public Department[] getDepartments() {
         return departments;
@@ -65,7 +65,7 @@ public class Faculty {
 
     /**
      * Видаляє кафедру за індексом
-     * @param numOfDepartment
+     * @param numOfDepartment номер кафедри
      */
     public void deleteDepartment(int numOfDepartment){
         if (numOfDepartment<=departments.length && numOfDepartment>=0) {
@@ -83,7 +83,7 @@ public class Faculty {
 
     /**
      * Змінює назву кафедри
-     * @param nameOfFaculty
+     * @param nameOfFaculty назва кафедри
      */
     public void setNameOfFaculty(String nameOfFaculty) {
         this.nameOfFaculty = nameOfFaculty;
@@ -102,7 +102,7 @@ public class Faculty {
 
     /**
      * Повертає довжину масиву кафедр
-     * @return
+     * @return довжина масиву кафедр
      */
     public int departmentsLength(){
         return departments.length;

@@ -17,7 +17,7 @@ public final class DataInput {
 	/**
 	 * Зчитує з стрічки long
 	 * @return повертає long
-	 * @throws IOException
+	 * @throws IOException помилка
 	 */
 	public static Long getLong() throws IOException{
 		while (true) {
@@ -100,7 +100,7 @@ public final class DataInput {
 	/**
 	 * Вводимо стрічку з якої всі інші методи зчитують інформацію
 	 * @return повертає стрічку
-	 * @throws IOException
+	 * @throws IOException помилка
 	 */
 	private static String getString() throws IOException{
 		InputStreamReader isr = new InputStreamReader(System.in);
