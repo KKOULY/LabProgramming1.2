@@ -575,8 +575,8 @@ public class Tools {
                 for(Department b:departments){
                     if(b.toString().equals(nameOfDepartment)){
                         b.addTeacher(new Teacher(name,lastName,a,b));
+                        break;
                     }
-                    break;
                 }
                 break;
             }
