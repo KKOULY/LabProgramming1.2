@@ -227,6 +227,7 @@ public class Laboratory {
                 }
             } else System.out.println("Ви ввели неправильні дані");
             Tools.savePeople(faculties);
+            Tools.saveFaculties(faculties);
             Tools.saveDepartments(faculties);
         } else System.out.println("Ви ввели неправильні дані");
     }
