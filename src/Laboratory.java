@@ -12,7 +12,7 @@ public class Laboratory {
     private static Faculty[] faculties = new Faculty[0];
 
     /**
-     * Метод main
+І     * Метод main
      * @param args -
      */
     public static void main(String[] args) {
@@ -286,6 +286,7 @@ public class Laboratory {
                 } else System.out.println("Такого факультету не існує!");
                 break;
         }
+        Tools.savePeople(faculties);
         Tools.saveFaculties(faculties);
     }
 
